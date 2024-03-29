@@ -5,6 +5,8 @@
 #include "driver/mcpwm.h"
 #include "soc/mcpwm_periph.h"
 
+// For GPIO pins, we can change the SDA and SLC (or what ever those were, to different pins as well)
+
 // Motor 1 configuration
 #define GPIO_MOTOR1_IN1 22
 #define GPIO_MOTOR1_IN2 23
