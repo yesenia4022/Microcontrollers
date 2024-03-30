@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 import 'other/my_text.dart';
 import 'other/sign_button.dart';
 import 'other/my_square.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
-  void signInLogic() {}
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-
     return Scaffold(
       backgroundColor: Colors.grey[400],
       body: SafeArea(
@@ -63,7 +76,7 @@ class LoginScreen extends StatelessWidget {
           
                 SignButton(
                   text: 'Sign In',
-                  onPressed: signInLogic,
+                  onPressed: signInLogic, 
                     // Implement what happens when the button is pressed
                     // For example, validate form and sign in the user
                 ),
@@ -98,7 +111,8 @@ class LoginScreen extends StatelessWidget {
           
                 MySquare(
                   imagePath: 'lib/images/google.png', // Specify the image path here
-                  onPressed: signInLogic,
+                  //onPressed: signInLogicGoogle,
+                  onPressed: (){},
                 ),
               ],
             ),
@@ -107,4 +121,41 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+  // Create our function for onPressed: to connect the fire-base operation
+  Future<void> signInLogic() async {
+    final auth = FirebaseAuth.instance;
+    final String email = emailController.text;
+    final String password = passwordController.text;
+
+    if (email.isEmpty || password.isEmpty) {
+      // Ideally, show an error message to the user, indicating email/pass must contain something
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Email and password cannot be empty'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    auth.signInWithEmailAndPassword(email: email, password: password);
+  }
+
+/*
+  Future<void> signInLogicGoogle() async {
+    // code
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    if(googleUser != null) {
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+      // Sign in to Firebase with the Google user credentials
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      // Successful authentication actions (e.g., navigate to home screen)
+    }
+  }
+  */
 }
