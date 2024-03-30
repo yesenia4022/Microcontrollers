@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91191462627",
+    "project_id": "asar-cd8e5",
+    "storage_bucket": "asar-cd8e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91191462627:android:adfd00a1bde73723ce53d6",
+        "android_client_info": {
+          "package_name": "com.example.asar_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7UEZXEEHa9vRFYwvGswoQnZCq9WLgShc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
