@@ -1,0 +1,71 @@
+[0;33m--- esp-idf-monitor 1.4.0 on /dev/cu.usbserial-140 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x400d6dfd: ledc_update_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:729
+0x400d540b: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:93
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x400d71c6: ledc_set_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:804
+0x400d5404: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:92
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x4000bfed: _xtos_set_intlevel in ROM
+0x4008647b: vPortClearInterruptMaskFromISR at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:564
+ (inlined by) vPortExitCritical at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:504
+0x400d6e9c: vPortExitCriticalSafe at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:600
+ (inlined by) ledc_update_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:734
+0x400d540b: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:93
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x4000bfed: _xtos_set_intlevel in ROM
+0x4008647b: vPortClearInterruptMaskFromISR at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:564
+ (inlined by) vPortExitCritical at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:504
+0x400d6e9c: vPortExitCriticalSafe at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:600
+ (inlined by) ledc_update_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:734
+0x400d540b: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:93
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x4000bfed: _xtos_set_intlevel in ROM
+0x4008647b: vPortClearInterruptMaskFromISR at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:564
+ (inlined by) vPortExitCritical at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:504
+0x400d6e9c: vPortExitCriticalSafe at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:600
+ (inlined by) ledc_update_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:734
+0x400d540b: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:93
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x400d81c7: task_wdt_timeout_handling at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+0x400d858c: task_wdt_isr at /Users/sdli/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:515
+0x40082f69: _xt_lowint1 at /Users/sdli/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+0x400d7224: ledc_set_duty at /Users/sdli/esp/esp-idf/components/driver/ledc/ledc.c:818
+0x400d5404: set_servo_angle at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:92
+0x400d5427: app_main at /Users/sdli/esp/Microcontrollers/projects/arm_control/main/arm_control.c:108
+0x400e4330: main_task at /Users/sdli/esp/esp-idf/components/freertos/app_startup.c:208
+0x400860d9: vPortTaskWrapper at /Users/sdli/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0m

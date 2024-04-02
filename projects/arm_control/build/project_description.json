@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "arm_control",
-    "project_version":    "6d99abb",
+    "project_version":    "fdacb74-dirty",
     "project_path":       "/Users/sdli/esp/Microcontrollers/projects/arm_control",
     "idf_path":           "/Users/sdli/esp/esp-idf",
     "build_dir":          "/Users/sdli/esp/Microcontrollers/projects/arm_control/build",
