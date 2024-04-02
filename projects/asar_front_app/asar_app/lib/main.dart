@@ -1,7 +1,10 @@
+import 'package:asar_app/screens/device_screen.dart';
+import 'package:asar_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'login_screen/login_screen.dart';
 import 'dart:io';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +27,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ASAR App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: LoginScreen(),
+      navigatorKey: navigatorKey, // Assign the navigator key
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginScreen(),
+        '/devices': (context) => DeviceScreen(),
+      },
     );
   }
 }

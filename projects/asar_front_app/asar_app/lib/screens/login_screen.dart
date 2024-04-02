@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
 import 'other/my_text.dart';
 import 'other/sign_button.dart';
 import 'other/my_square.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -76,9 +76,14 @@ class _LoginScreenState extends State<LoginScreen> {
           
                 SignButton(
                   text: 'Sign In',
-                  onPressed: signInLogic, 
-                    // Implement what happens when the button is pressed
-                    // For example, validate form and sign in the user
+                  //onPressed: signInLogic,
+                  onPressed: (){
+                    signInLogic().then((_) {
+                      Navigator.pushNamed(context, '/devices');
+                    }).catchError((error) {
+                      print('Error during sign in: $error');
+                    });
+                  }, 
                 ),
           
                 const SizedBox(height: 25),
