@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+//final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class DeviceScreen extends StatelessWidget {
   @override
@@ -15,10 +15,12 @@ class DeviceScreen extends StatelessWidget {
             tooltip: 'Log Out',
             onPressed: () async {
               // Logic that causes the user to sign out
+              print("Logging out...");
               await FirebaseAuth.instance.signOut();
 
               // Log user out (login page :3)
-              navigatorKey.currentState?.pushReplacementNamed('/');
+              print("Logged out");
+              //navigatorKey.currentState?.pushReplacementNamed('/');
             },
           ),
         ],

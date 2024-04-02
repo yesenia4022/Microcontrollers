@@ -2,6 +2,7 @@ import 'package:asar_app/screens/device_screen.dart';
 import 'package:asar_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -20,8 +21,27 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    
+    // Listen to the authentication state changes
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print("User is currently signed out!");
+        navigatorKey.currentState?.pushReplacementNamed('/');
+      } else {
+        print("User is signed in!");
+        navigatorKey.currentState?.pushReplacementNamed('/devices');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
