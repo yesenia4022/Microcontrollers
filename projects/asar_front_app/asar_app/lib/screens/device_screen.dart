@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:asar_app/screens/central_screen.dart';
 
 class DeviceScreen extends StatefulWidget {
   @override
@@ -20,7 +21,15 @@ class _DeviceScreenState extends State<DeviceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Your Devices')),
+        backgroundColor: Colors.lightBlue[50],
+        title: const Center(
+          child: Text(
+            'Your Devices', 
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+        )),
         automaticallyImplyLeading: false,
       ),
       
@@ -35,6 +44,11 @@ class _DeviceScreenState extends State<DeviceScreen> {
                 // Handle the device tap here
                 print('Tapped on ${_devices[index]}');
                 // Navigate to device details or perform other actions
+                Navigator.pushNamed(
+                  context,
+                  '/central',
+                  arguments: CentralScreenArguments(deviceName: _devices[index]),
+                );
               },
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -76,4 +90,10 @@ class _DeviceScreenState extends State<DeviceScreen> {
       ),
     );
   }
+}
+
+class CentralScreenArguments {
+  final String deviceName;
+
+  CentralScreenArguments({required this.deviceName});
 }

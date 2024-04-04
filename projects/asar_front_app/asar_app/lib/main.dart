@@ -1,5 +1,6 @@
 import 'package:asar_app/screens/device_screen.dart';
 import 'package:asar_app/screens/login_screen.dart';
+import 'package:asar_app/screens/central_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,8 +51,14 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: navigatorKey, // Assign the navigator key
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => const LoginScreen(),
         '/devices': (context) => DeviceScreen(),
+      },
+      onGenerateRoute: (RouteSettings settings){
+        if(settings.name == '/central'){
+          final argu = settings.arguments as CentralScreenArguments;
+          return MaterialPageRoute(builder: ((context) => CentralScreen(deviceName: argu.deviceName))); 
+        }
       },
     );
   }
