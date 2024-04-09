@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/sdli/esp/Microcontrollers/projects/arm_control/build/esp-idf/newlib/port/cmake_install.cmake")
+  include("/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/esp-idf/newlib/port/cmake_install.cmake")
 endif()
 
