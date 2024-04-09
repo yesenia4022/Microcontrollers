@@ -1,4 +1,4 @@
-/* * Data converted from /Users/sdli/esp/Microcontrollers/projects/arm_control/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

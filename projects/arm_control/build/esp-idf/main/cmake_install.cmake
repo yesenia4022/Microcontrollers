@@ -1,4 +1,4 @@
-# Install script for directory: /Users/sdli/esp/Microcontrollers/projects/arm_control/main
+# Install script for directory: /Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
