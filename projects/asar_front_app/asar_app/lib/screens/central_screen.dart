@@ -4,20 +4,20 @@ class CentralScreen extends StatefulWidget {
   final String deviceName;
 
   // Constructor to receive the device name or any other necessary data
-  CentralScreen({Key? key, required this.deviceName}) : super(key: key);
+  const CentralScreen({super.key, required this.deviceName});
 
   @override
-  _CentralScreenState createState() => _CentralScreenState();
+  CentralScreenState createState() => CentralScreenState();
 }
 
-class _CentralScreenState extends State<CentralScreen> {
+class CentralScreenState extends State<CentralScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[50],
         title: Text(
-          'Device Status for ${widget.deviceName}',
+          'Status: ${widget.deviceName}',
         ),
       ),
     );
