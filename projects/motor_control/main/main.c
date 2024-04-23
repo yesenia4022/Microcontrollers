@@ -62,8 +62,14 @@ void send_motor_start_command() {
 
 void app_main() {
     i2c_master_init();
-    //printf("before selecting mux channel\n");
+    printf("Master initialized, waiting to send start command...\n");
+
+    // Wait for some event or condition to be true before sending the command.
+    // This could be a delay, a button press, or some initialization completion.
+    // For example, you could use vTaskDelay() to wait for a few seconds:
+    vTaskDelay(pdMS_TO_TICKS(5000));  // Wait for 5 seconds
+
+    printf("Sending start motor command...\n");
     select_mux_channel(MUX_CHANNEL_1); // Select the mux channel connected to the slave
-    //printf("before sending start motor command\n");
     send_motor_start_command(); // Send the start command to the slave
 }
