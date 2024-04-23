@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "motor_control",
-    "project_version":    "1",
+    "project_version":    "d1cc159-dirty",
     "project_path":       "/Users/yeseniapuga/esp/projects/motor_control",
     "idf_path":           "/Users/yeseniapuga/esp/esp-idf",
     "build_dir":          "/Users/yeseniapuga/esp/projects/motor_control/build",
@@ -1090,7 +1090,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/Users/yeseniapuga/esp/projects/motor_control/build/esp-idf/main/libmain.a",
-            "sources": [ "/Users/yeseniapuga/esp/projects/motor_control/main/motor_control.c" ],
+            "sources": [ "/Users/yeseniapuga/esp/projects/motor_control/main/main.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
