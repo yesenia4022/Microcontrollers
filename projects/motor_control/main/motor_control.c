@@ -5,14 +5,12 @@
 #include "driver/i2c.h"
 #include "esp_log.h"
 
-<<<<<<< Updated upstream
 //Luis was here TODAY
 
 // Motor 1 configuration
 #define GPIO_MOTOR1_IN1 22
 #define GPIO_MOTOR1_IN2 23
 #define GPIO_MOTOR1_PWM 18 // Use one of the MCPWM pins for PWM
-=======
 #define I2C_SLAVE_SDA_IO 21       // SDA pin is connected to SD1 of the multiplexer
 #define I2C_SLAVE_SCL_IO 22       // SCL pin is connected to SC1 of the multiplexer
 #define I2C_SLAVE_NUM I2C_NUM_0   // I2C port number for the slave device
