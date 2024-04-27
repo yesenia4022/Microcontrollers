@@ -25,10 +25,10 @@ class MyTextFormField extends StatelessWidget {
         validator: validator,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: BorderSide(color: Colors.black, width: 1.0),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2.0),
           ),
           fillColor: Colors.grey.shade200,
           filled: true,

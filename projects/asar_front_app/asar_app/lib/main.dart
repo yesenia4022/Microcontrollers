@@ -53,7 +53,14 @@ class MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
-        '/devices': (context) => DeviceScreen(),
+        '/devices': (context) {
+          final user = FirebaseAuth.instance.currentUser;
+          if (user == null) {
+              return const LoginScreen();
+          } else {
+              return const DeviceScreen();
+          }
+        }
       },
       onGenerateRoute: (RouteSettings settings){
         if(settings.name == '/central'){

@@ -24,9 +24,9 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.lightBlue[50],
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -36,13 +36,11 @@ class LoginScreenState extends State<LoginScreen> {
               // Handles the icon of our application
               children: [
                 Image.asset(
-                'lib/images/body_back.png',
-                width: 200,
-                height: 200,
+                  'lib/images/body_back.png',
+                  width: 200,
+                  height: 200,
                 ),
-          
                 const SizedBox(height: 50),
-          
                 // Greeting the user
                 const Text(
                   'Welcome back!',
@@ -53,41 +51,25 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 // 25 Pixels before text
                 const SizedBox(height: 25),
-                
-                // Use MyTextFormField for email
-                // Obscure allows the password to be hidden (privacy)
                 MyTextFormField(
                   controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-          
-                // Use MyTextFormField for password
+                const SizedBox(height: 10),
                 MyTextFormField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
-                ),              
+                ),  
                 const SizedBox(height: 25),
-          
                 const Text("Forgot password?"),
-          
                 const SizedBox(height: 25),
-          
                 SignButton(
                   text: 'Sign In',
-                  //onPressed: signInLogic,
-                  onPressed: (){
-                    signInLogic().then((_) {
-                      Navigator.pushNamed(context, '/devices');
-                    }).catchError((error) {
-                      print('Error during sign in: $error');
-                    });
-                  }, 
+                  onPressed: signInLogic,
                 ),
-          
                 const SizedBox(height: 25),
-          
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -111,13 +93,10 @@ class LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-          
                 const SizedBox(height: 25),
-          
                 MySquare(
-                  imagePath: 'lib/images/google.png', // Specify the image path here
-                  //onPressed: signInLogicGoogle,
-                  onPressed: (){},
+                  imagePath: 'lib/images/google.png',
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -128,24 +107,32 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   // Create our function for onPressed: to connect the fire-base operation
-  Future<void> signInLogic() async {
-    final auth = FirebaseAuth.instance;
-    final String email = emailController.text;
-    final String password = passwordController.text;
+Future<void> signInLogic() async {
+  final auth = FirebaseAuth.instance;
+  final String email = emailController.text;
+  final String password = passwordController.text;
 
-    if (email.isEmpty || password.isEmpty) {
-      // Ideally, show an error message to the user, indicating email/pass must contain something
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Email and password cannot be empty'),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-
-    auth.signInWithEmailAndPassword(email: email, password: password);
+  if (email.isEmpty || password.isEmpty) {
+    // Ideally, show an error message to the user, indicating email/pass must contain something
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Email and password cannot be empty'),
+        backgroundColor: Colors.red,
+      ),
+    );
+    return;
   }
+
+    //auth.signInWithEmailAndPassword(email: email, password: password);
+  try {
+    await auth.signInWithEmailAndPassword(email: email, password: password);
+    // Sign-in successful, navigate to the next page or perform other actions
+  } catch (e) {
+    // Handle sign-in errors, such as invalid credentials or network issues
+    print('Error signing in: $e');
+    // Optionally, display an error message to the user
+  }
+}
 
 /*
   Future<void> signInLogicGoogle() async {

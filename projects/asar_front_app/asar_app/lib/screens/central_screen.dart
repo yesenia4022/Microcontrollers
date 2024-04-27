@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_flutter_icons/new_flutter_icons.dart';
 
 class CentralScreen extends StatefulWidget {
   final String deviceName;
@@ -18,6 +19,30 @@ class CentralScreenState extends State<CentralScreen> {
         backgroundColor: Colors.lightBlue[50],
         title: Text(
           'Status: ${widget.deviceName}',
+        ),
+      ),
+
+      // The bottom bar navigation
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Ionicons.cafe),
+              onPressed: () {},
+            ),
+
+            IconButton(
+              icon: const Icon(AntDesign.areachart),
+              onPressed: () {},
+            ),
+
+            IconButton(
+              icon: const Icon(AntDesign.camera),
+              onPressed: () {},
+            ),
+          ],
         ),
       ),
     );
