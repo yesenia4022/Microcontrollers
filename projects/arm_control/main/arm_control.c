@@ -49,10 +49,37 @@ void setAngle(float angle_deg, ledc_channel_t channel) {
     ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel);
 }
 
+
 void setDuty(ledc_channel_t channel){
     ledc_set_duty_and_update(LEDC_HIGH_SPEED_MODE, channel, 0, 0); // Start with 0% duty
     ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel); // Update duty
 }
+
+
+// Move Arm Segment 1 Down to Table
+void setUpArm(){
+    setAngle(90, LEDC_CHANNEL_0);
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+}
+
+
+// Reset Arm Segment 1
+void resetArm(){
+    setAngle(0, LEDC_CHANNEL_0);
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+}
+
+
+// Arm Segment 2 Begins Cleaning
+void clean(int cycles){
+    for (int i = 0; i < cycles; i++){
+        // Swipe from Left -> Right (then return to position)
+        setAngle(180, LEDC_CHANNEL_1);
+        // General Delay
+        vTaskDelay(200 / portTICK_PERIOD_MS);
+    }
+}
+
 
 // void set_pwm_duty_cycle(float duty_ms) {
 //     uint32_t duty = (duty_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
