@@ -5,7 +5,7 @@
 
 // Define GPIO pin for servo control
 #define SERVO_GPIO_1 GPIO_NUM_13
-#define SERVO_GPIO_2 GPIO_NUM_14
+//#define SERVO_GPIO_2 GPIO_NUM_14
 
 
 void setAngle(ledc_channel_t channel, int angle){
@@ -38,16 +38,16 @@ void app_main() {
     };
     ledc_channel_config(&ledc_conf_1);
 
-    ledc_channel_config_t ledc_conf_2 = {
-        .gpio_num = SERVO_GPIO_2,                // GPIO pin for PWM output
-        .speed_mode = LEDC_HIGH_SPEED_MODE,    // LEDC speed mode
-        .channel = LEDC_CHANNEL_1,             // LEDC channel
-        .intr_type = LEDC_INTR_DISABLE,        // disable interrupt
-        .timer_sel = LEDC_TIMER_0,             // timer index
-        .duty = 0,                             // initial duty cycle
-        .hpoint = 0,                           // hpoint value
-    };
-    ledc_channel_config(&ledc_conf_2);
+    // ledc_channel_config_t ledc_conf_2 = {
+    //     .gpio_num = SERVO_GPIO_2,                // GPIO pin for PWM output
+    //     .speed_mode = LEDC_HIGH_SPEED_MODE,    // LEDC speed mode
+    //     .channel = LEDC_CHANNEL_1,             // LEDC channel
+    //     .intr_type = LEDC_INTR_DISABLE,        // disable interrupt
+    //     .timer_sel = LEDC_TIMER_0,             // timer index
+    //     .duty = 0,                             // initial duty cycle
+    //     .hpoint = 0,                           // hpoint value
+    // };
+    //ledc_channel_config(&ledc_conf_2);
 
     //while (true) {
         // TESTING SERVO
@@ -57,13 +57,14 @@ void app_main() {
         setAngle(LEDC_CHANNEL_0, angle);
         vTaskDelay(10 / portTICK_PERIOD_MS); // Delay for smooth movement
     }
+    vTaskDelay(2000 / portTICK_PERIOD_MS);
 
     // Move the servo from 180 to 0 degrees
-    for (int angle = 180; angle >= 0; angle--) {
-        setAngle(LEDC_CHANNEL_1, angle);
-        vTaskDelay(10 / portTICK_PERIOD_MS); // Delay for smooth movement
-    }
+    // for (int angle = 180; angle >= 0; angle--) {
+    //     setAngle(LEDC_CHANNEL_1, angle);
+    //     vTaskDelay(10 / portTICK_PERIOD_MS); // Delay for smooth movement
+    // }
     //}
     ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, 0); // Set idle_level to 0 (low) after stopping PWM
-    ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0); // Set idle_level to 0 (low) after stopping PWM
+    //ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0); // Set idle_level to 0 (low) after stopping PWM
 }
