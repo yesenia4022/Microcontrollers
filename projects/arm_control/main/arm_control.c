@@ -112,7 +112,7 @@ void app_main() {
     configTimer();
 
     // Configure channels
-    configChannel();
+    configChannels();
 
     // Set up Fade
     ledc_fade_func_install(0);
