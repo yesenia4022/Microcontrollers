@@ -5,6 +5,7 @@
 
 // Define GPIO pin for servo control
 #define SERVO_GPIO_1 GPIO_NUM_13
+#define SERVO_GPIO_2 GPIO_NUM_12
 
 #define SERVO_MIN_PULSE_MS  0.5 // Minimum pulse width in milliseconds
 #define SERVO_MAX_PULSE_MS  2.5 // Maximum pulse width in milliseconds
@@ -13,7 +14,8 @@
 // --------------------------------------------------------------------------------------------------------------
 
 
-void configChannel(){
+void configChannels(){
+    // Configure first channel
     ledc_channel_config_t ledc_conf_1 = {
         .gpio_num = SERVO_GPIO_1,
         .speed_mode = LEDC_HIGH_SPEED_MODE,
@@ -24,6 +26,18 @@ void configChannel(){
         .hpoint = 0,
     };
     ledc_channel_config(&ledc_conf_1);
+
+    // Configure second channel
+    ledc_channel_config_t ledc_conf_2 = {
+        .gpio_num = SERVO_GPIO_2,
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .channel = LEDC_CHANNEL_1,
+        .intr_type = LEDC_INTR_DISABLE,
+        .timer_sel = LEDC_TIMER_0,
+        .duty = 0,
+        .hpoint = 0,
+    };
+    ledc_channel_config(&ledc_conf_2);
 }
 
 
@@ -103,7 +117,8 @@ void app_main() {
     // Set up Fade
     ledc_fade_func_install(0);
     setDuty(LEDC_CHANNEL_0);
-
+    setDuty(LEDC_CHANNEL_1);
+    
     // Rotate servo counterclockwise to 90 degrees
     setAngle(90, LEDC_CHANNEL_0);
 
@@ -111,13 +126,17 @@ void app_main() {
     vTaskDelay(3000 / portTICK_PERIOD_MS);
 
     // Rotate servo counterclockwise to 0 degrees
-    setAngle(0, LEDC_CHANNEL_0);
+    setAngle(0, LEDC_CHANNEL_1);
 
     // Wait for some time
     vTaskDelay(3000 / portTICK_PERIOD_MS);
 
+    setAngle(180, LEDC_CHANNEL_1);
+
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
     // Stop PWM signal
     ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, 0); // Stop PWM channel
+    ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0);
     ledc_fade_func_uninstall(); // Uninstall LEDC fade functions
 }
 
