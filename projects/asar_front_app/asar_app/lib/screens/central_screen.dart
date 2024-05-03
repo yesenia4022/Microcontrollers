@@ -35,7 +35,9 @@ class CentralScreenState extends State<CentralScreen> {
 
             IconButton(
               icon: const Icon(AntDesign.areachart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/results');
+              },
             ),
 
             IconButton(
