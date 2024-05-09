@@ -1,6 +1,7 @@
 import 'package:asar_app/screens/device_screen.dart';
 import 'package:asar_app/screens/login_screen.dart';
 import 'package:asar_app/screens/central_screen.dart';
+import 'package:asar_app/screens/temperature_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -60,7 +61,8 @@ class MyAppState extends State<MyApp> {
           } else {
               return const DeviceScreen();
           }
-        }
+        },
+        '/temperature': (context) => TemperatureScreen(),
       },
       onGenerateRoute: (RouteSettings settings){
         if(settings.name == '/central'){
