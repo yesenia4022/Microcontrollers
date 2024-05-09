@@ -1,0 +1,19 @@
+[0;33m--- WARNING: Serial ports accessed as /dev/tty.* will hang gdb if launched.[0m
+[0;33m--- Using /dev/cu.usbserial-210 instead...[0m
+[0;33m--- esp-idf-monitor 1.4.0 on /dev/cu.usbserial-210 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x4000c46c: memset in ROM
+[0m
+[0;33m0x4000c46c: memset in ROM
+0x4000c477: memset in ROM
+[0m
+[0;33m0x4000c469: memset in ROM
+0x400d6262: app_main at /Users/yeseniapuga/esp/projects/slave_content/main/slave.c:192
+0x400e5b64: main_task at /Users/yeseniapuga/esp/esp-idf/components/freertos/app_startup.c:208
+0x40087431: vPortTaskWrapper at /Users/yeseniapuga/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0m
