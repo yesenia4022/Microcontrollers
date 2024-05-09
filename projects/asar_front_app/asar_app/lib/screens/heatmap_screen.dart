@@ -1,75 +1,39 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class HeatMapGraph extends StatelessWidget {
-    final List<double> temperatures;
+class TemperatureHeatmap extends StatelessWidget {
+  final List<double> temperatures;
 
-    HeatMapGraph({required this.temperatures});
+  const TemperatureHeatmap({Key? key, required this.temperatures}) : super(key: key);
 
-    @override
-    Widget build(BuildContext context){
-      List<FlSpot> position = temperatures
-        .asMap()
-        .entries
-        .map((e) => FlSpot(e.key.toDouble(), e.value))
-        .toList();
+  @override
+  Widget build(BuildContext context) {
+    int width = 32; // Width of the grid
+    int height = 24; // Height of the grid
 
-        // Continue Logic
-        return  Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LineChart(
-            LineChartData(
-              gridData: FlGridData(show: true),
-              titlesData: FlTitlesData(
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: true, reservedSize: 22, getTitlesWidget: bottomTitleWidgets)
-                ),
-                leftTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: true, reservedSize: 40, getTitlesWidget: leftTitleWidgets),
-                ),
-              ),
-              borderData: FlBorderData(show: true),
-              lineBarsData: [
-              LineChartBarData(
-                spots: position,
-                isCurved: true,
-                color: Theme.of(context).primaryColor,
-                barWidth: 5,
-                isStrokeCapRound: true,
-                dotData: FlDotData(show: false),
-                belowBarData: BarAreaData(show: true, color: Theme.of(context).primaryColor.withOpacity(0.3),),
-            )
-          ],
-            ),
-          ),
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: width,
+      ),
+      itemCount: temperatures.length,
+      itemBuilder: (context, index) {
+        return Container(
+          color: getColorForTemperature(temperatures[index]),
+          alignment: Alignment.center,
         );
-    }
-
-    Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff68737d),
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    );
-    Widget text = Text(value.toInt().toString(), style: style);
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 16,
-      child: text,
+      },
     );
   }
 
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff67727d),
-      fontWeight: FontWeight.bold,
-      fontSize: 15,
-    );
-    String text = '${value.toInt()}°';
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 16,
-      child: Text(text, style: style),
-    );
+  Color getColorForTemperature(double temperature) {
+    // Adjust these thresholds and colors based on your specific data range
+    if (temperature < 20) {
+      return Colors.blue[300]!;
+    } else if (temperature < 25) {
+      return Colors.green[300]!;
+    } else if (temperature < 30) {
+      return Colors.yellow[700]!;
+    } else {
+      return Colors.red[800]!;
+    }
   }
 }

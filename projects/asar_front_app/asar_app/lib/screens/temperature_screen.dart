@@ -54,9 +54,7 @@ class TemperatureScreenState extends State<TemperatureScreen> {
           'Temperature Data Output',
         ),
       ),
-      body: _heatMapArray.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : HeatMapGraph(temperatures: _heatMapArray),
+      body: TemperatureHeatmap(temperatures: _heatMapArray),
     );
   }
 }
