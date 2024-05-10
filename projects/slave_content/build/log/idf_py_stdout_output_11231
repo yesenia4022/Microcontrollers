@@ -1,0 +1,483 @@
+from partition at offset 0x10000[0m
+[0;32mI (192) boot: Disabling RNG early entropy source...[0m
+[0;32mI (203) cpu_start: Multicore app[0m
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15556
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.3-dev-1922-g5454d37d49 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Apr 26 2024 15:06:42[0m
+[0;32mI (33) boot: Multicore bootloader[0m
+[0;32mI (37) boot: chip revision: v3.1[0m
+[0;32mI (41) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (45) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (50) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (54) boot: Enabling RNG early entropy source...[0m
+[0;32mI (60) boot: Partition Table:[0m
+[0;32mI (63) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (78) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (86) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (93) boot: End of partition table[0m
+[0;32mI (97) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0b1a8h ( 45480) map[0m
+[0;32mI (121) esp_image: segment 1: paddr=0001b1d0 vaddr=3ffb0000 size=02318h (  8984) load[0m
+[0;32mI (125) esp_image: segment 2: paddr=0001d4f0 vaddr=40080000 size=02b28h ( 11048) load[0m
+[0;32mI (132) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=16150h ( 90448) map[0m
+[0;32mI (167) esp_image: segment 4: paddr=00036178 vaddr=40082b28 size=0b1a8h ( 45480) load[0m
+[0;32mI (192) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (192) boot: Disabling RNG early entropy source...[0m
+[0;32mI (203) cpu_start: Multicore app[0m
+[0;32mI (212) cpu_start: Pro cpu start user code[0m
+[0;32mI (212) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (212) cpu_start: Application information:[0m
+[0;32mI (215) cpu_start: Project name:     slave_content[0m
+[0;32mI (221) cpu_start: App version:      bbe7524-dirty[0m
+[0;32mI (226) cpu_start: Compile time:     Apr 26 2024 15:06:36[0m
+[0;32mI (232) cpu_start: ELF file SHA256:  2500aeec3...[0m
+[0;32mI (238) cpu_start: ESP-IDF:          v5.3-dev-1922-g5454d37d49[0m
+[0;32mI (244) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (249) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (254) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (259) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (266) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (272) heap_init: At 3FFB2BE0 len 0002D420 (181 KiB): DRAM[0m
+[0;32mI (278) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (284) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (291) heap_init: At 4008DCD0 len 00012330 (72 KiB): IRAM[0m
+[0;32mI (298) spi_flash: detected chip: generic[0m
+[0;32mI (301) spi_flash: flash io: dio[0m
+[0;33mW (305) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (318) mcpwm(legacy): legacy driver is deprecated, please migrate to `driver/mcpwm_prelude.h`[0m
+[0;33mW (328) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (339) main_task: Started on CPU0[0m
+[0;32mI (349) main_task: Calling app_main()[0m
+Initializing MCPWM motor1 control GPIO...
+Initializing MCPWM motor2 control GPIO...
+Motor 1 forward at 80.000000% duty cycle
+Motor 2 forward at 100.000000% duty cycle
+Stopping motors
+Stopping motors
+[0;31mE (606919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (607919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (608919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (609919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (610919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (611919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (612919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (613919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (614919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (615919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (616919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (617919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (618919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (619919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (620919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (621919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (622919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (623919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (624919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (625919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (626919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (627919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (628919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (629919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (630919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (631919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (632919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (633919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (634919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (635919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (636919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (637919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (638919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (639919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (640919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (641919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (642919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (643919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (644919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (645919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (646919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647519) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647619) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647719) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647819) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (647919) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (648019) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (648119) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (648219) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (648319) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m
+[0;31mE (648419) i2c: i2c_slave_read_buffer(1643): i2c null address error[0m

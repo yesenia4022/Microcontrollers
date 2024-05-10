@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/CMakeFiles/bootloader
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/CMakeFiles/bootloader.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/CMakeFiles/bootloader-complete.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/sdli/esp/esp-idf/Microcontrollers/projects/arm_control/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

@@ -1,9 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "driver/gpio.h"
-#include "driver/mcpwm.h"
-#include "soc/mcpwm_periph.h"
+#include "driver/i2c.h"
+#include "esp_log.h"
 
 //Luis was here TODAY
 
@@ -11,80 +11,53 @@
 #define GPIO_MOTOR1_IN1 22
 #define GPIO_MOTOR1_IN2 23
 #define GPIO_MOTOR1_PWM 18 // Use one of the MCPWM pins for PWM
+#define I2C_SLAVE_SDA_IO 21       // SDA pin is connected to SD1 of the multiplexer
+#define I2C_SLAVE_SCL_IO 22       // SCL pin is connected to SC1 of the multiplexer
+#define I2C_SLAVE_NUM I2C_NUM_0   // I2C port number for the slave device
+#define I2C_SLAVE_FREQ_HZ 100000  // I2C slave clock frequency
+#define I2C_SLAVE_ADDRESS 0x28    // The I2C address for the slave ESP32
+>>>>>>> Stashed changes
 
-// Motor 2 configuration
-#define GPIO_MOTOR2_IN1 21 
-#define GPIO_MOTOR2_IN2 25 
-#define GPIO_MOTOR2_PWM 19 // Changed to a pin that supports output and MCPWM if available
+static const char *TAG = "slave_device";
 
-// Initialize GPIOs for both motors
-static void mcpwm_example_gpio_initialize1(void) {
-    printf("Initializing MCPWM motor1 control GPIO...\n");
-
-    // Motor 1
-    gpio_set_direction(GPIO_MOTOR1_IN1, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_MOTOR1_IN2, GPIO_MODE_OUTPUT);
-    mcpwm_gpio_init(MCPWM_UNIT_0, MCPWM0A, GPIO_MOTOR1_PWM); // Set GPIO 18 as PWM0A for Motor 1
-
-}
-static void mcpwm_example_gpio_initialize2(void) {
-    printf("Initializing MCPWM motor2 control GPIO...\n");
-
-    // Motor 2
-    gpio_set_direction(GPIO_MOTOR2_IN1, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_MOTOR2_IN2, GPIO_MODE_OUTPUT);
-    mcpwm_gpio_init(MCPWM_UNIT_1, MCPWM1B, GPIO_MOTOR2_PWM); // Set GPIO 25 as PWM1A for Motor 2
-}
-
-// Function to control motor 1 direction and speed
-static void brushed_motor1_forward(mcpwm_unit_t mcpwm_num, mcpwm_timer_t timer_num, float duty_cycle) {
-    gpio_set_level(GPIO_MOTOR1_IN1, 1); // Set IN1 to high
-    gpio_set_level(GPIO_MOTOR1_IN2, 0); // Set IN2 to low
-    mcpwm_set_duty(mcpwm_num, timer_num, MCPWM_OPR_A, duty_cycle);
-    mcpwm_set_duty_type(mcpwm_num, timer_num, MCPWM_OPR_A, MCPWM_DUTY_MODE_0);
-}
-
-// Function to control motor 2 direction and speed
-static void brushed_motor2_forward(mcpwm_unit_t mcpwm_num, mcpwm_timer_t timer_num, float duty_cycle) {
-    gpio_set_level(GPIO_MOTOR2_IN1, 1); // Set IN1 to high
-    gpio_set_level(GPIO_MOTOR2_IN2, 0); // Set IN2 to low
-    mcpwm_set_duty(mcpwm_num, timer_num, MCPWM_OPR_B, duty_cycle); // Use MCPWM_OPR_B for Motor 2
-    mcpwm_set_duty_type(mcpwm_num, timer_num, MCPWM_OPR_B, MCPWM_DUTY_MODE_0);
-}
-
-void app_main(void) {
-    // Initialize MCPWM GPIO for both motors
-    mcpwm_example_gpio_initialize1();
-    mcpwm_example_gpio_initialize2();
-
-    // Configure MCPWM for both motors
-    mcpwm_config_t pwm_config = {
-        .frequency = 1000,  // frequency = 1kHz
-        .cmpr_a = 0,        // duty cycle of PWMxA = 0% for Motor 1
-        .cmpr_b = 0,        // duty cycle of PWMxB = 0% for Motor 2
-        .counter_mode = MCPWM_UP_COUNTER,
-        .duty_mode = MCPWM_DUTY_MODE_0
+// Initialize I2C as a slave
+void i2c_slave_init(void) {
+    i2c_config_t conf = {
+        .sda_io_num = I2C_SLAVE_SDA_IO,
+        .scl_io_num = I2C_SLAVE_SCL_IO,
+        .sda_pullup_en = GPIO_PULLUP_ENABLE,
+        .scl_pullup_en = GPIO_PULLUP_ENABLE,
+        .mode = I2C_MODE_SLAVE,
+        .slave.addr_10bit_en = 0,
+        .slave.slave_addr = I2C_SLAVE_ADDRESS,
     };
-    mcpwm_init(MCPWM_UNIT_0, MCPWM_TIMER_0, &pwm_config); // Initialize PWM0A for Motor 1
-    mcpwm_init(MCPWM_UNIT_1, MCPWM_TIMER_1, &pwm_config); // Initialize PWM1A for Motor 2
+    ESP_ERROR_CHECK(i2c_param_config(I2C_SLAVE_NUM, &conf));
+    ESP_ERROR_CHECK(i2c_driver_install(I2C_SLAVE_NUM, conf.mode, 1024, 1024, 0));
+}
 
-    // Main loop
+// Task to handle incoming I2C commands
+void i2c_slave_task(void *args) {
+    uint8_t data[1]; // Buffer for received data
     while (1) {
-        // Run motor 1 forward at 60% duty cycle
-        brushed_motor1_forward(MCPWM_UNIT_0, MCPWM_TIMER_0, 80.0);
-
-        // Run motor 2 forward at 100% duty cycle
-        brushed_motor2_forward(MCPWM_UNIT_1, MCPWM_TIMER_1, 100.0);
-        
-        vTaskDelay(2000 / portTICK_PERIOD_MS); // Forward for 2000ms
-
-        // Stop motor 1
-        mcpwm_set_signal_low(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A);
-
-        // Stop motor 2
-        mcpwm_set_signal_low(MCPWM_UNIT_1, MCPWM_TIMER_1, MCPWM_OPR_B);
-        
-        vTaskDelay(2000 / portTICK_PERIOD_MS); // Stop for 2000ms
+        int size = i2c_slave_read_buffer(I2C_SLAVE_NUM, data, sizeof(data), portMAX_DELAY);
+        if (size == 0) {
+            // No data received, loop again
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+        // Log the received data
+        ESP_LOGI(TAG, "Received data: 0x%X", data[0]);
+        // Implement any actions based on the received data if necessary
+        // For now, just log the reception
+        // Add a delay to prevent a tight loop in case of continuous data.
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
+void app_main(void) {
+    ESP_LOGI(TAG, "Slave device initialization...");
+    i2c_slave_init();
+
+    ESP_LOGI(TAG, "Starting I2C slave task...");
+    xTaskCreate(i2c_slave_task, "i2c_slave_task", 2048, NULL, 10, NULL);
+}

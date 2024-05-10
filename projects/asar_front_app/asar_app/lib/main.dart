@@ -1,7 +1,13 @@
+import 'package:asar_app/screens/device_screen.dart';
+import 'package:asar_app/screens/login_screen.dart';
+import 'package:asar_app/screens/central_screen.dart';
+import 'package:asar_app/screens/temperature_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'login_screen/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,18 +23,53 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+  @override
+  MyAppState createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    
+    // Listen to the authentication state changes
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print("User is currently signed out!");
+        navigatorKey.currentState?.pushReplacementNamed('/');
+      } else {
+        print("User is signed in!");
+        navigatorKey.currentState?.pushReplacementNamed('/devices');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ASAR App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: LoginScreen(),
+      navigatorKey: navigatorKey, // Assign the navigator key
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/devices': (context) {
+          final user = FirebaseAuth.instance.currentUser;
+          if (user == null) {
+              return const LoginScreen();
+          } else {
+              return const DeviceScreen();
+          }
+        },
+        '/temperature': (context) => TemperatureScreen(),
+      },
+      onGenerateRoute: (RouteSettings settings){
+        if(settings.name == '/central'){
+          final argu = settings.arguments as CentralScreenArguments;
+          return MaterialPageRoute(builder: ((context) => CentralScreen(deviceName: argu.deviceName))); 
+        }
+      },
     );
   }
 }
