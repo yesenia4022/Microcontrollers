@@ -1,0 +1,80 @@
+H��=0b534h ( 46388) map[0m
+[0;32mI (122) esp_image: segment 1: paddr=0001b55c vaddr=3ffb0000 size=022f0h (  8944) load[0m
+[0;32mI (125) esp_image: segment 2: paddr=0001d854 vaddr=40080000 size=027c4h ( 10180) load[0m
+[0;32mI (132) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=16740h ( 91968) map[0m
+[0;32mI (168) esp_image: segment 4: paddr=00036768 vaddr=400827c4 size=0b734h ( 46900) load[0m
+[0;32mI (193) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (193) boot: Disabling RNG early entropy source...[0m
+[0;32mI (205) cpu_start: Multicore app[0m
+[0;32mI (213) cpu_start: Pro cpu start user code[0m
+[0;32mI (214) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (214) cpu_start: Application information:[0m
+[0;32mI (217) cpu_start: Project name:     slave2_test[0m
+[0;32mI (222) cpu_start: App version:      32c344b-dirty[0m
+[0;32mI (227) cpu_start: Compile time:     May  9 2024 14:46:18[0m
+[0;32mI (233) cpu_start: ELF file SHA256:  be947f083...[0m
+[0;32mI (239) cpu_start: ESP-IDF:          v5.3-dev-1922-g5454d37d49[0m
+[0;32mI (245) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (250) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (255) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (260) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (267) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (273) heap_init: At 3FFB2C20 len 0002D3E0 (180 KiB): DRAM[0m
+[0;32mI (279) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (285) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (292) heap_init: At 4008DEF8 len 00012108 (72 KiB): IRAM[0m
+[0;32mI (300) spi_flash: detected chip: generic[0m
+[0;32mI (303) spi_flash: flash io: dio[0m
+[0;33mW (307) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (320) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (331) main_task: Started on CPU0[0m
+[0;32mI (341) main_task: Calling app_main()[0m
+Before i2c_init()
+Before configTimer()
+Before configChannels()
+Before While Loop
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+First servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
+Second servo operation completed and master notified
+Inside While Loop, Before memset()
+Inside While Loop, before size check
