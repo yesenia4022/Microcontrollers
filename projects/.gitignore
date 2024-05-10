@@ -3,5 +3,4 @@
 
 # Ignore specific directories
 esp-idf/
-micropython/
 
