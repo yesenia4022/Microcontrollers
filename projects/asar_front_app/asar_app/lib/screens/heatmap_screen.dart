@@ -9,17 +9,21 @@ class TemperatureHeatmap extends StatelessWidget {
   Widget build(BuildContext context) {
     int width = 32; // Width of the grid
     int height = (temperatures.length / width).ceil(); 
-      return GridView.builder(
-      padding: EdgeInsets.all(5), // Ensure there's padding around the grid
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: width,
-        childAspectRatio: 1
-      ),
-      itemCount: temperatures.length,
-      itemBuilder: (context, index) {
-        return Container(
-          color: getColorForTemperature(temperatures[index]),
-          alignment: Alignment.center,
+      return LayoutBuilder(
+      builder: (context, constraints) {
+        return GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: width,
+            childAspectRatio: constraints.maxWidth / constraints.maxHeight,
+          ),
+          itemCount: temperatures.length,
+          itemBuilder: (context, index) {
+            return Container(
+              color: getColorForTemperature(temperatures[index]),
+              alignment: Alignment.center,
+            );
+          },
         );
       },
     );
