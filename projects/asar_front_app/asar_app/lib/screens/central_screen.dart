@@ -20,26 +20,30 @@ class CentralScreenState extends State<CentralScreen> {
         title: Text(
           'Status: ${widget.deviceName}',
         ),
+        automaticallyImplyLeading: false,
       ),
 
       // The bottom bar navigation
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/temperature');
+        },
+        child: const Icon(AntDesign.areachart),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // The bottom bar navigation
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
+        notchMargin: 6.0,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: const Icon(Ionicons.cafe),
-              onPressed: () {},
-            ),
-
-            IconButton(
-              icon: const Icon(AntDesign.areachart),
+              icon: const Icon(Ionicons.arrow_back_circle_sharp),
               onPressed: () {
-                Navigator.pushNamed(context, '/temperature');
+                Navigator.pop(context);
               },
             ),
-
             IconButton(
               icon: const Icon(AntDesign.camera),
               onPressed: () {},

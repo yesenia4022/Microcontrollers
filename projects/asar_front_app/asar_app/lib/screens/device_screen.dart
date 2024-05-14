@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:new_flutter_icons/new_flutter_icons.dart';
+
 
 
 class DeviceScreen extends StatefulWidget {
@@ -207,7 +209,7 @@ class DeviceScreenState extends State<DeviceScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Ionicons.arrow_back_circle_sharp),
               onPressed: () async {
                 // Logic that causes the user to sign out
                 print("Logging out...");
@@ -221,7 +223,7 @@ class DeviceScreenState extends State<DeviceScreen> {
 
             IconButton(
               onPressed: _addDevice, 
-              icon: Icon(Icons.add),
+              icon: const Icon(Ionicons.add_circle_sharp),
               tooltip: 'Add Device',
             ), 
           ],
