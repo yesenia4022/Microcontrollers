@@ -96,8 +96,10 @@ void setDuty(ledc_channel_t channel) {
 }
 
 void setUpArm() {
+    //setAngle(0, LEDC_CHANNEL_0);
+    //vTaskDelay(100 / portTICK_PERIOD_MS);
     setAngle(90, LEDC_CHANNEL_0);
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    vTaskDelay(100 / portTICK_PERIOD_MS);
 }
 
 void resetArm() {
@@ -106,10 +108,13 @@ void resetArm() {
 }
 
 void clean(int cycles) {
+    //setAngle(0, LEDC_CHANNEL_1);
     for (int i = 0; i < cycles; i++) {
         setAngle(180, LEDC_CHANNEL_1);
+        //printf("CLEAN ANGLE 180");
         vTaskDelay(200 / portTICK_PERIOD_MS);
         setAngle(0, LEDC_CHANNEL_1); // Optionally reset position after moving
+        //printf("CLEAN ANGLE 0");
         vTaskDelay(200 / portTICK_PERIOD_MS);
     }
 }
@@ -122,9 +127,9 @@ void app_main(void) {
     printf("Before configChannels()\n");
     configChannels();
     //printf("Setting Duty for Channel 0\n");
-    //setDuty(LEDC_CHANNEL_0);
+    setDuty(LEDC_CHANNEL_0);
     //printf("Setting Duty for Channel 1\n");
-    //setDuty(LEDC_CHANNEL_1);
+    setDuty(LEDC_CHANNEL_1);
     ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
     vTaskDelay(50 / portTICK_PERIOD_MS);
     ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
@@ -141,17 +146,17 @@ void app_main(void) {
             switch (data[0]) {
                 case SERVO1_CONTROL_CMD:
                     setUpArm(); // Only move the first servo
-                    update_task_status(COMPLETION_SIGNAL); // was 1
+                    update_task_status(COMPLETION_SIGNAL);
                     printf("First servo operation completed and master notified\n");
                     break;
                 case SERVO2_CONTROL_CMD:
                     clean(5); // Perform 5 cleaning cycles for the second servo
-                    update_task_status(COMPLETION_SIGNAL); // was 2
+                    update_task_status(COMPLETION_SIGNAL);
                     printf("Second servo operation completed and master notified\n");
                     break;
                 case SERVO3_CONTROL_CMD:
                     resetArm(); // Perform 5 cleaning cycles for the second servo
-                    update_task_status(COMPLETION_SIGNAL); // was 1
+                    update_task_status(COMPLETION_SIGNAL);
                     printf("Third servo operation completed and master notified\n");
                     break;
             }

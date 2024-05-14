@@ -125,11 +125,10 @@ void app_main() {
             case STATE_CAMERA:
                 printf("In Camera Control State\n");
                 select_mux_channel(MUX_CHANNEL_3);
-                //send_command_to_slave(SLAVE_ADDR3, CAMERA_START_CMD);
                 send_command_to_slave(SLAVE_ADDR3, CAMERA_START_CMD);
                 if (read_slave_signal(SLAVE_ADDR3) == 0x01) {
                     printf("Camera operation completed.\n");
-                    vTaskDelay(pdMS_TO_TICKS(1000));
+                    //vTaskDelay(pdMS_TO_TICKS(1000));
                     current_state = STATE_SERVO2_CONTROL;
                 }
                 break;
@@ -143,7 +142,7 @@ void app_main() {
                 }
                 break;
             case STATE_SERVO3_CONTROL:
-                printf("In Servo 2 Control State\n");
+                printf("In Servo 3 Control State\n");
                 select_mux_channel(MUX_CHANNEL_2);
                 send_command_to_slave(SLAVE_ADDR2, SERVO3_CONTROL_CMD);
                 if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
@@ -156,7 +155,7 @@ void app_main() {
             // ask the user if they want to clean again if so then go back to STATE_SERVO1_CONTROL
             // or if the user says no then enter to STATE_END
             case STATE_END:
-                printf("All 3 States completed successfully!\n");
+                printf("All 4 States completed successfully!\n");
                 break;
             default:
                 printf("Unknown state\n");

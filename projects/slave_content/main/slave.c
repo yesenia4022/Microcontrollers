@@ -174,8 +174,6 @@ void brushed_motor_stop(mcpwm_unit_t mcpwm_num, mcpwm_timer_t timer_num) {
     gpio_set_level(GPIO_MOTOR2_IN2, 0);
     mcpwm_set_signal_low(mcpwm_num, timer_num, MCPWM_OPR_B);
 }
-//uint8_t *data = (uint8_t *)malloc(I2C_SLAVE_RX_BUF_LEN);
-//int size;
 
 void app_main() {
     i2c_slave_init();

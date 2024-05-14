@@ -6,16 +6,15 @@
 #include "freertos/task.h"
 #include "driver/ledc.h"
 
-#define SLAVE_SCL_IO    8   // GPIO number for I2C slave clock
-#define SLAVE_SDA_IO    10   // GPIO number for I2C slave data
-#define SLAVE_NUM       I2C_NUM_0  // I2C port number for the slave device
-#define SLAVE_ADDR      0x06  // I2C address for the slave device
-#define COMPLETION_SIGNAL 0x01  // Signal to indicate completion
-//#define HELLO_WORLD_CMD 0x09  // Command to print Hello World
-#define CAMERA_START_CMD             0x05 // Command to start the camera
-#define I2C_SLAVE_RX_BUF_LEN         1024
+#define SLAVE_SCL_IO    22
+#define SLAVE_SDA_IO    21
+#define SLAVE_NUM       I2C_NUM_0
+#define SLAVE_ADDR      0x06
+#define COMPLETION_SIGNAL 0x01
+#define CAMERA_START_CMD 0x05
+#define I2C_SLAVE_RX_BUF_LEN 1024
 
-volatile uint8_t task_status = 0; 
+volatile uint8_t task_status = 0;
 
 void i2c_slave_init(void) {
     i2c_config_t i2c_config = {
@@ -36,22 +35,28 @@ void update_task_status(uint8_t status) {
     i2c_slave_write_buffer(SLAVE_NUM, &task_status, sizeof(task_status), portMAX_DELAY);
 }
 
+void delay_and_update() {
+    for (int i = 1; i <= 10; i++) {
+        printf("%d sec has passed\n", i);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+    update_task_status(COMPLETION_SIGNAL);
+    printf("Action completed, status updated.\n");
+}
+
 void app_main(void) {
     i2c_slave_init();
     printf("Slave device initialized successfully\n");
 
     while (1) {
-        printf("inside of while loop\n");
         uint8_t *data = (uint8_t *)malloc(I2C_SLAVE_RX_BUF_LEN);
         memset(data, 0, I2C_SLAVE_RX_BUF_LEN);
-        int size_luis = i2c_slave_read_buffer(SLAVE_NUM, data, I2C_SLAVE_RX_BUF_LEN, 1000 / portTICK_PERIOD_MS);
+        int size = i2c_slave_read_buffer(SLAVE_NUM, data, I2C_SLAVE_RX_BUF_LEN, 1000 / portTICK_PERIOD_MS);
 
-        if (size_luis > 0 && data[0] == CAMERA_START_CMD) {
+        if (size > 0 && data[0] == CAMERA_START_CMD) {
             printf("CAMERA START command received, performing action...\n");
-            // Perform the action associated with HELLO WORLD
-            update_task_status(COMPLETION_SIGNAL);
-            printf("Action completed, status updated.\n");
+            delay_and_update();  // This is called only after receiving the CAMERA_START_CMD
         }
-        free(data); // Free the data regardless of whether data was received or not
+        free(data);  // free the data
     }
 }

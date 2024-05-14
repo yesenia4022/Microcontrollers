@@ -1,0 +1,45 @@
+-- Existing sdkconfig '/Users/yeseniapuga/esp/projects/motor_control/sdkconfig' renamed to '/Users/yeseniapuga/esp/projects/motor_control/sdkconfig.old'.
+-- Found Git: /opt/homebrew/bin/git (found version "2.43.0") 
+-- The C compiler identification is GNU 13.2.0
+-- The CXX compiler identification is GNU 13.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /Users/yeseniapuga/esp/projects/motor_control/sdkconfig
+-- Compiler supported targets: xtensa-esp-elf
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of time_t
+-- Check size of time_t - done
+-- Found Python3: /Users/yeseniapuga/.espressif/python_env/idf5.3_py3.11_env/bin/python (found version "3.11.7") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- App "motor_control" version: 3b0e770-dirty
+-- Adding linker script /Users/yeseniapuga/esp/projects/motor_control/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /Users/yeseniapuga/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_bootloader_format esp_coex esp_common esp_driver_ana_cmpr esp_driver_dac esp_driver_gpio esp_driver_gptimer esp_driver_i2c esp_driver_i2s esp_driver_ledc esp_driver_mcpwm esp_driver_parlio esp_driver_pcnt esp_driver_rmt esp_driver_sdio esp_driver_sdm esp_driver_sdmmc esp_driver_sdspi esp_driver_spi esp_driver_tsens esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_system esp_timer esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash nvs_sec_provider openthread partition_table perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /Users/yeseniapuga/esp/esp-idf/components/app_trace /Users/yeseniapuga/esp/esp-idf/components/app_update /Users/yeseniapuga/esp/esp-idf/components/bootloader /Users/yeseniapuga/esp/esp-idf/components/bootloader_support /Users/yeseniapuga/esp/esp-idf/components/bt /Users/yeseniapuga/esp/esp-idf/components/cmock /Users/yeseniapuga/esp/esp-idf/components/console /Users/yeseniapuga/esp/esp-idf/components/cxx /Users/yeseniapuga/esp/esp-idf/components/driver /Users/yeseniapuga/esp/esp-idf/components/efuse /Users/yeseniapuga/esp/esp-idf/components/esp-tls /Users/yeseniapuga/esp/esp-idf/components/esp_adc /Users/yeseniapuga/esp/esp-idf/components/esp_app_format /Users/yeseniapuga/esp/esp-idf/components/esp_bootloader_format /Users/yeseniapuga/esp/esp-idf/components/esp_coex /Users/yeseniapuga/esp/esp-idf/components/esp_common /Users/yeseniapuga/esp/esp-idf/components/esp_driver_ana_cmpr /Users/yeseniapuga/esp/esp-idf/components/esp_driver_dac /Users/yeseniapuga/esp/esp-idf/components/esp_driver_gpio /Users/yeseniapuga/esp/esp-idf/components/esp_driver_gptimer /Users/yeseniapuga/esp/esp-idf/components/esp_driver_i2c /Users/yeseniapuga/esp/esp-idf/components/esp_driver_i2s /Users/yeseniapuga/esp/esp-idf/components/esp_driver_ledc /Users/yeseniapuga/esp/esp-idf/components/esp_driver_mcpwm /Users/yeseniapuga/esp/esp-idf/components/esp_driver_parlio /Users/yeseniapuga/esp/esp-idf/components/esp_driver_pcnt /Users/yeseniapuga/esp/esp-idf/components/esp_driver_rmt /Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdio /Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdm /Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdmmc /Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdspi /Users/yeseniapuga/esp/esp-idf/components/esp_driver_spi /Users/yeseniapuga/esp/esp-idf/components/esp_driver_tsens /Users/yeseniapuga/esp/esp-idf/components/esp_driver_uart /Users/yeseniapuga/esp/esp-idf/components/esp_driver_usb_serial_jtag /Users/yeseniapuga/esp/esp-idf/components/esp_eth /Users/yeseniapuga/esp/esp-idf/components/esp_event /Users/yeseniapuga/esp/esp-idf/components/esp_gdbstub /Users/yeseniapuga/esp/esp-idf/components/esp_hid /Users/yeseniapuga/esp/esp-idf/components/esp_http_client /Users/yeseniapuga/esp/esp-idf/components/esp_http_server /Users/yeseniapuga/esp/esp-idf/components/esp_https_ota /Users/yeseniapuga/esp/esp-idf/components/esp_https_server /Users/yeseniapuga/esp/esp-idf/components/esp_hw_support /Users/yeseniapuga/esp/esp-idf/components/esp_lcd /Users/yeseniapuga/esp/esp-idf/components/esp_local_ctrl /Users/yeseniapuga/esp/esp-idf/components/esp_mm /Users/yeseniapuga/esp/esp-idf/components/esp_netif /Users/yeseniapuga/esp/esp-idf/components/esp_netif_stack /Users/yeseniapuga/esp/esp-idf/components/esp_partition /Users/yeseniapuga/esp/esp-idf/components/esp_phy /Users/yeseniapuga/esp/esp-idf/components/esp_pm /Users/yeseniapuga/esp/esp-idf/components/esp_psram /Users/yeseniapuga/esp/esp-idf/components/esp_ringbuf /Users/yeseniapuga/esp/esp-idf/components/esp_rom /Users/yeseniapuga/esp/esp-idf/components/esp_system /Users/yeseniapuga/esp/esp-idf/components/esp_timer /Users/yeseniapuga/esp/esp-idf/components/esp_wifi /Users/yeseniapuga/esp/esp-idf/components/espcoredump /Users/yeseniapuga/esp/esp-idf/components/esptool_py /Users/yeseniapuga/esp/esp-idf/components/fatfs /Users/yeseniapuga/esp/esp-idf/components/freertos /Users/yeseniapuga/esp/esp-idf/components/hal /Users/yeseniapuga/esp/esp-idf/components/heap /Users/yeseniapuga/esp/esp-idf/components/http_parser /Users/yeseniapuga/esp/esp-idf/components/idf_test /Users/yeseniapuga/esp/esp-idf/components/ieee802154 /Users/yeseniapuga/esp/esp-idf/components/json /Users/yeseniapuga/esp/esp-idf/components/log /Users/yeseniapuga/esp/esp-idf/components/lwip /Users/yeseniapuga/esp/projects/motor_control/main /Users/yeseniapuga/esp/esp-idf/components/mbedtls /Users/yeseniapuga/esp/esp-idf/components/mqtt /Users/yeseniapuga/esp/esp-idf/components/newlib /Users/yeseniapuga/esp/esp-idf/components/nvs_flash /Users/yeseniapuga/esp/esp-idf/components/nvs_sec_provider /Users/yeseniapuga/esp/esp-idf/components/openthread /Users/yeseniapuga/esp/esp-idf/components/partition_table /Users/yeseniapuga/esp/esp-idf/components/perfmon /Users/yeseniapuga/esp/esp-idf/components/protobuf-c /Users/yeseniapuga/esp/esp-idf/components/protocomm /Users/yeseniapuga/esp/esp-idf/components/pthread /Users/yeseniapuga/esp/esp-idf/components/sdmmc /Users/yeseniapuga/esp/esp-idf/components/soc /Users/yeseniapuga/esp/esp-idf/components/spi_flash /Users/yeseniapuga/esp/esp-idf/components/spiffs /Users/yeseniapuga/esp/esp-idf/components/tcp_transport /Users/yeseniapuga/esp/esp-idf/components/ulp /Users/yeseniapuga/esp/esp-idf/components/unity /Users/yeseniapuga/esp/esp-idf/components/usb /Users/yeseniapuga/esp/esp-idf/components/vfs /Users/yeseniapuga/esp/esp-idf/components/wear_levelling /Users/yeseniapuga/esp/esp-idf/components/wifi_provisioning /Users/yeseniapuga/esp/esp-idf/components/wpa_supplicant /Users/yeseniapuga/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/yeseniapuga/esp/projects/motor_control/build
