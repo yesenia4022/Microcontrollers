@@ -21,6 +21,7 @@
 #define SERVO1_CONTROL_CMD           0x03 // Command to control the first servo
 #define SERVO2_CONTROL_CMD           0x04 // Command to control the second servo
 #define CAMERA_START_CMD             0x05 // Command to start the camera
+#define EXTENDED_TIME_CMD            0x06 // New command for 12 seconds
 #define SERVO3_CONTROL_CMD           0x08 // Command to control the 1st servo
 //#define HELLO_WORLD_CMD              0x09 // Command to test communication
 //#define GOODBYE_WORLD_CMD            0x0A // Command to test communication
@@ -30,8 +31,9 @@ typedef enum {
     STATE_SERVO1_CONTROL,
     STATE_SERVO2_CONTROL,
     STATE_SERVO3_CONTROL,
-    STATE_CAMERA,
+    STATE_BEFORE_CAMERA,
     STATE_END,
+    STATE_AFTER_CAMERA,
     NUM_STATES
 } State;
 
@@ -105,8 +107,8 @@ void app_main() {
             case STATE_MOTOR_CONTROL:
                 printf("In Motor Control State\n");
                 select_mux_channel(MUX_CHANNEL_1);
-                send_command_to_slave(SLAVE_ADDR1, MOTOR_START_CMD); // Send start command to the motor control slave
-                if (read_slave_signal(SLAVE_ADDR1) == 0x01) { // Assuming 0x01 is the completion signal
+                send_command_to_slave(SLAVE_ADDR1, MOTOR_START_CMD);
+                if (read_slave_signal(SLAVE_ADDR1) == 0x01) {
                     printf("Task completed by Motor Control Slave.\n");
                     current_state = STATE_SERVO1_CONTROL;
                 }
@@ -119,16 +121,16 @@ void app_main() {
                 if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
                     printf("Servo 1 operation completed.\n");
                     //current_state = STATE_SERVO2_CONTROL;
-                    current_state = STATE_CAMERA;
+                    current_state = STATE_BEFORE_CAMERA;
                 }
                 break;
-            case STATE_CAMERA:
-                printf("In Camera Control State\n");
+            case STATE_BEFORE_CAMERA:
+                printf("In Before Camera Control State\n");
                 select_mux_channel(MUX_CHANNEL_3);
                 send_command_to_slave(SLAVE_ADDR3, CAMERA_START_CMD);
                 if (read_slave_signal(SLAVE_ADDR3) == 0x01) {
-                    printf("Camera operation completed.\n");
-                    //vTaskDelay(pdMS_TO_TICKS(1000));
+                    printf("Took picture before cleaning the surface.\n");
+                    vTaskDelay(pdMS_TO_TICKS(1000));
                     current_state = STATE_SERVO2_CONTROL;
                 }
                 break;
@@ -138,6 +140,17 @@ void app_main() {
                 send_command_to_slave(SLAVE_ADDR2, SERVO2_CONTROL_CMD);
                 if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
                     printf("Servo 2 operation completed.\n");
+                    //current_state = STATE_SERVO3_CONTROL;
+                    current_state = STATE_AFTER_CAMERA;
+                }
+                break;
+            case STATE_AFTER_CAMERA:
+                printf("In After Camera Control State\n");
+                select_mux_channel(MUX_CHANNEL_3);
+                send_command_to_slave(SLAVE_ADDR3, EXTENDED_TIME_CMD);
+                if (read_slave_signal(SLAVE_ADDR3) == 0x01) {
+                    printf("Took picture after cleaning the surface.\n");
+                    //current_state = STATE_END;
                     current_state = STATE_SERVO3_CONTROL;
                 }
                 break;
@@ -147,15 +160,13 @@ void app_main() {
                 send_command_to_slave(SLAVE_ADDR2, SERVO3_CONTROL_CMD);
                 if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
                     printf("Servo 3 operation completed.\n");
+                    //current_state = STATE_AFTER_CAMERA;
                     current_state = STATE_END;
                     
                 }
                 break;
-            // have another state where it will enter after  STATE_SERVO3_CONTROL where the robot
-            // ask the user if they want to clean again if so then go back to STATE_SERVO1_CONTROL
-            // or if the user says no then enter to STATE_END
             case STATE_END:
-                printf("All 4 States completed successfully!\n");
+                printf("All 5 States completed successfully!\n");
                 break;
             default:
                 printf("Unknown state\n");

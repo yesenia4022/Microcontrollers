@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "slave2_test",
-    "project_version":    "3b0e770-dirty",
+    "project_version":    "2917acd-dirty",
     "project_path":       "/Users/yeseniapuga/esp/projects/slave3_test",
     "idf_path":           "/Users/yeseniapuga/esp/esp-idf",
     "build_dir":          "/Users/yeseniapuga/esp/projects/slave3_test/build",
