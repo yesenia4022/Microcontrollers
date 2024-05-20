@@ -84,10 +84,21 @@ void update_task_status(uint8_t status) {
 }
 
 void setAngle(float angle_deg, ledc_channel_t channel) {
+    for (float i = 0; i <= angle_deg; i += 0.5){
+        float pulse_ms = (i / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
+        uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, channel, duty);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel);
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+    }
+}
+
+void setCleanAngle(float angle_deg, ledc_channel_t channel){
     float pulse_ms = (angle_deg / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
     uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
     ledc_set_duty(LEDC_HIGH_SPEED_MODE, channel, duty);
     ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel);
+    vTaskDelay(550 / portTICK_PERIOD_MS);
 }
 
 void setDuty(ledc_channel_t channel) {
@@ -98,24 +109,38 @@ void setDuty(ledc_channel_t channel) {
 void setUpArm() {
     //setAngle(0, LEDC_CHANNEL_0);
     //vTaskDelay(100 / portTICK_PERIOD_MS);
-    setAngle(90, LEDC_CHANNEL_0);
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    setAngle(45, LEDC_CHANNEL_0);
+    vTaskDelay(200 / portTICK_PERIOD_MS);
 }
 
 void resetArm() {
-    setAngle(0, LEDC_CHANNEL_0);
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    for (float ang = 45; ang >= 0; ang -= 1){
+        float pulse_ms = (ang / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
+        uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
+        vTaskDelay(50 / portTICK_PERIOD_MS); 
+
+    }
+    // float pulse_ms = (0 / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
+    // uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
+    // ledc_set_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, duty);
+    // ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
+    // vTaskDelay(200 / portTICK_PERIOD_MS);
+    //setAngle(23, LEDC_CHANNEL_0);
+    //vTaskDelay(200 / portTICK_PERIOD_MS);
 }
+
 
 void clean(int cycles) {
     //setAngle(0, LEDC_CHANNEL_1);
     for (int i = 0; i < cycles; i++) {
-        setAngle(180, LEDC_CHANNEL_1);
-        //printf("CLEAN ANGLE 180");
-        vTaskDelay(200 / portTICK_PERIOD_MS);
-        setAngle(0, LEDC_CHANNEL_1); // Optionally reset position after moving
+        setCleanAngle(0, LEDC_CHANNEL_1);
         //printf("CLEAN ANGLE 0");
-        vTaskDelay(200 / portTICK_PERIOD_MS);
+        vTaskDelay(550 / portTICK_PERIOD_MS);
+        setCleanAngle(180, LEDC_CHANNEL_1); // Optionally reset position after moving
+        //printf("CLEAN ANGLE 180");
+        vTaskDelay(550 / portTICK_PERIOD_MS);
     }
 }
 
@@ -136,6 +161,9 @@ void app_main(void) {
     vTaskDelay(50 / portTICK_PERIOD_MS);
 
     uint8_t *data = (uint8_t *)malloc(I2C_SLAVE_RX_BUF_LEN);
+    int setUpFlag = 1;
+    int cleanFlag = 1;
+    int resetFlag = 1;
     printf("Before While Loop\n");
     while (1) {
         printf("Inside While Loop, Before memset()\n");
@@ -145,20 +173,37 @@ void app_main(void) {
         if (size > 0) {
             switch (data[0]) {
                 case SERVO1_CONTROL_CMD:
-                    setUpArm(); // Only move the first servo
-                    update_task_status(COMPLETION_SIGNAL);
-                    printf("First servo operation completed and master notified\n");
-                    break;
+                    if (setUpFlag) {
+                        setUpArm(); // Only move the first servo
+                        setUpFlag = 0;
+                        update_task_status(COMPLETION_SIGNAL);
+                        printf("First servo operation completed and master notified\n");
+                        break;
+                    } else {
+                        break;
+                    }
                 case SERVO2_CONTROL_CMD:
-                    clean(5); // Perform 5 cleaning cycles for the second servo
-                    update_task_status(COMPLETION_SIGNAL);
-                    printf("Second servo operation completed and master notified\n");
-                    break;
+                    if (cleanFlag){ 
+                            //setAngle(45, LEDC_CHANNEL_0);
+                            clean(3); // Perform 5 cleaning cycles for the second servo
+                            cleanFlag = 0;
+                            update_task_status(COMPLETION_SIGNAL);
+                            printf("Second servo operation completed and master notified\n");
+                            break;
+                    } else {
+                        break;
+                    }   
                 case SERVO3_CONTROL_CMD:
-                    resetArm(); // Perform 5 cleaning cycles for the second servo
-                    update_task_status(COMPLETION_SIGNAL);
-                    printf("Third servo operation completed and master notified\n");
-                    break;
+                    printf("inside of SERVO3_CONTROL_CMD case\n");
+                    if (resetFlag) {
+                        resetArm(); // Perform 5 cleaning cycles for the second servo
+                        resetFlag = 0;
+                        update_task_status(COMPLETION_SIGNAL);
+                        printf("Third servo operation completed and master notified\n");
+                        break;
+                    } else {
+                        break;
+                    } 
             }
         }
         vTaskDelay(pdMS_TO_TICKS(100));

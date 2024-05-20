@@ -1,36 +1,53 @@
 import urequests
 import time
-time.sleep(2)
 import uasyncio
 from camera import CameraLoop
 import network
-wlan = network.WLAN(network.STA_IF)  # Create a station interface
-wlan.active(True)  # Activate the interface
-wifis = wlan.scan()
-#print(wifis)
-#print("Scanning for WiFi networks, please wait...")
-#authmodes = ['Open', 'WEP', 'WPA-PSK' 'WPA2-PSK4', 'WPA/WPA2-PSK']
-#for (ssid, bssid, channel, RSSI, authmode, hidden) in wlan.scan():
-#  print("* {:s}".format(ssid))
-#  print("   - Channel: {}".format(channel))
-#  print("   - RSSI: {}".format(RSSI))
-#  print("   - BSSID: {:02x}:{:02x}:{:02x}:{:02x}:{:02x}:{:02x}".format(*bssid))
-#  print()
-print('connecting to network...')
-#wlan.connect("Larb911", "ASAR711!")  # Connect to the network
-wlan.connect("Larb711", "Alejandro7")
-print("After wlan connect")
-print(wlan.isconnected())
-#if (wlan.isconnected()):
-#    url = 'https://asar-cd8e5-default-rtdb.firebaseio.com/.json'  # Change to your actual database URL
-#    headers = {'Content-Type': 'application/json'}
-#    data = {"message": "hello bro"}
-#    response = urequests.post(url, json=data, headers=headers)
-#    print(response.text)
-#    response.close()
-#    while not wlan.isconnected():  # Wait until connected
-#        pass
-#print('network config:', wlan.ifconfig())
-main = CameraLoop()
-print("made cameraloop object")
-uasyncio.run(main.run())
+import machine  # Importing machine for handling I2C
+
+# Initialize the WLAN interface for WiFi connection
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+print('Connecting to network...')
+wlan.connect("Larb911", "ASAR711!")
+
+while not wlan.isconnected():  # Wait until connected
+    pass
+
+print('Network config:', wlan.ifconfig())
+
+# Initialize I2C
+i2c = machine.I2C(0, scl=machine.Pin(8), sda=machine.Pin(10))
+
+# I2C address and command definitions
+SLAVE_ADDR_CAMERA = 0x06
+CAMERA_START_CMD = 0x05
+COMPLETION_SIGNAL = 0x01
+
+def send_completion_signal():
+    """Send a completion signal back to the master device."""
+    try:
+        i2c.writeto(SLAVE_ADDR_CAMERA, bytes([COMPLETION_SIGNAL]))  # Signal completion back to master
+        print("Completion signal sent successfully to master.")
+    except Exception as e:
+        print("Failed to send completion signal:", e)
+
+async def listen_for_commands():
+    print("Camera ESP32-C3 initialized and waiting for commands.")
+    while True:
+        await uasyncio.sleep(0.1)  # Non-blocking delay to allow for other operations
+        if i2c.any():  # Check if there's data waiting
+            data = i2c.readfrom(SLAVE_ADDR_CAMERA, 1)  # Read one byte from master
+            if data[0] == CAMERA_START_CMD:
+                print("CAMERA START command received, initializing camera operations...")
+                camera_loop = CameraLoop()
+                await camera_loop.run()  # Run the camera loop
+                print("Camera operations completed.")
+                send_completion_signal()  # Signal completion back to master
+
+async def main():
+    # Initial welcome message or system checks can be placed here
+    await listen_for_commands()  # Begin listening for I2C commands indefinitely
+
+# Run the main coroutine
+uasyncio.run(main())
