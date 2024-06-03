@@ -1,6 +1,7 @@
 #include "driver/i2c.h"
 #include "esp_log.h"
 #include <stdio.h>
+#include "driver/gpio.h"
 
 #define I2C_MASTER_SCL_IO            22
 #define I2C_MASTER_SDA_IO            21
@@ -9,6 +10,8 @@
 #define I2C_MASTER_TX_BUF_DISABLE    0
 #define I2C_MASTER_RX_BUF_DISABLE    0
 #define I2C_MASTER_TIMEOUT_MS        1000
+
+#define LED_GPIO GPIO_NUM_13
 
 #define MUX_ADDRESS                  0x72 // Actual mux's I2C address
 #define MUX_CHANNEL_1                0x01 // Channel for the motor control ESP32
@@ -101,6 +104,19 @@ uint8_t read_slave_signal(uint8_t slave_addr) {
 void app_main() {
     i2c_master_init();
     printf("Master initialized, setting initial state...\n");
+    // int startMotorFlag = 1;
+    // int servo1Flag = 1;
+    // int servo2Flag = 1;
+    // int servo3Flag = 1;
+
+    // gpio_config_t io_conf = {
+    //     .pin_bit_mask = (1ULL << LED_GPIO),
+    //     .mode = GPIO_MODE_OUTPUT,
+    //     .intr_type = GPIO_INTR_DISABLE,
+    //     .pull_up_en = GPIO_PULLUP_DISABLE,
+    //     .pull_down_en = GPIO_PULLDOWN_DISABLE,
+    // };
+    //gpio_config(&io_conf);
 
     while (1) {
         switch(current_state) {
@@ -108,61 +124,49 @@ void app_main() {
                 printf("In Motor Control State\n");
                 select_mux_channel(MUX_CHANNEL_1);
                 send_command_to_slave(SLAVE_ADDR1, MOTOR_START_CMD);
-                if (read_slave_signal(SLAVE_ADDR1) == 0x01) {
+                if ((read_slave_signal(SLAVE_ADDR1) == 0x01)) {
                     printf("Task completed by Motor Control Slave.\n");
                     current_state = STATE_SERVO1_CONTROL;
+                    //current_state = STATE_END;
+                } 
+                else {
+                    current_state = STATE_MOTOR_CONTROL;
                 }
                 break;
             case STATE_SERVO1_CONTROL:
                 printf("In Servo 1 Control State\n");
                 select_mux_channel(MUX_CHANNEL_2);
                 send_command_to_slave(SLAVE_ADDR2, SERVO1_CONTROL_CMD);
-                //send_command_to_slave(SLAVE_ADDR2, SERVO3_CONTROL_CMD);
-                if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
+                if ((read_slave_signal(SLAVE_ADDR2) == 0x01)) {
                     printf("Servo 1 operation completed.\n");
-                    //current_state = STATE_SERVO2_CONTROL;
-                    current_state = STATE_BEFORE_CAMERA;
-                }
-                break;
-            case STATE_BEFORE_CAMERA:
-                printf("In Before Camera Control State\n");
-                select_mux_channel(MUX_CHANNEL_3);
-                send_command_to_slave(SLAVE_ADDR3, CAMERA_START_CMD);
-                if (read_slave_signal(SLAVE_ADDR3) == 0x01) {
-                    printf("Took picture before cleaning the surface.\n");
-                    vTaskDelay(pdMS_TO_TICKS(1000));
+                    vTaskDelay(pdMS_TO_TICKS(3000));
                     current_state = STATE_SERVO2_CONTROL;
+                } else {
+                    current_state = STATE_SERVO1_CONTROL;
                 }
                 break;
             case STATE_SERVO2_CONTROL:
                 printf("In Servo 2 Control State\n");
                 select_mux_channel(MUX_CHANNEL_2);
                 send_command_to_slave(SLAVE_ADDR2, SERVO2_CONTROL_CMD);
-                if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
+                if ((read_slave_signal(SLAVE_ADDR2) == 0x01)) {
                     printf("Servo 2 operation completed.\n");
-                    //current_state = STATE_SERVO3_CONTROL;
-                    current_state = STATE_AFTER_CAMERA;
-                }
-                break;
-            case STATE_AFTER_CAMERA:
-                printf("In After Camera Control State\n");
-                select_mux_channel(MUX_CHANNEL_3);
-                send_command_to_slave(SLAVE_ADDR3, EXTENDED_TIME_CMD);
-                if (read_slave_signal(SLAVE_ADDR3) == 0x01) {
-                    printf("Took picture after cleaning the surface.\n");
-                    //current_state = STATE_END;
+                    vTaskDelay(pdMS_TO_TICKS(3000));
                     current_state = STATE_SERVO3_CONTROL;
+                    //current_state = STATE_END;
+                } else {
+                    current_state = STATE_SERVO2_CONTROL;
                 }
                 break;
             case STATE_SERVO3_CONTROL:
                 printf("In Servo 3 Control State\n");
                 select_mux_channel(MUX_CHANNEL_2);
                 send_command_to_slave(SLAVE_ADDR2, SERVO3_CONTROL_CMD);
-                if (read_slave_signal(SLAVE_ADDR2) == 0x01) {
+                if ((read_slave_signal(SLAVE_ADDR2) == 0x01)) {
                     printf("Servo 3 operation completed.\n");
-                    //current_state = STATE_AFTER_CAMERA;
                     current_state = STATE_END;
-                    
+                } else {
+                    current_state = STATE_SERVO3_CONTROL;
                 }
                 break;
             case STATE_END:

@@ -55,12 +55,14 @@ void configTimer(){
 
 void setAngle(float angle_deg, ledc_channel_t channel) {
     // Convert angle to pulse width in milliseconds
-    float pulse_ms = (angle_deg / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
-    
-    // Convert pulse width to PWM duty cycle
-    uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
-    ledc_set_duty(LEDC_HIGH_SPEED_MODE, channel, duty);
-    ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel);
+    for (float ang = 0.0; ang <= angle_deg; ang += 1.5){
+        float pulse_ms = (ang / 180.0) * (SERVO_MAX_PULSE_MS - SERVO_MIN_PULSE_MS) + SERVO_MIN_PULSE_MS;
+        // Convert pulse width to PWM duty cycle
+        uint32_t duty = (pulse_ms / 20.0) * ((1 << LEDC_TIMER_13_BIT) - 1);
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, channel, duty);
+        ledc_update_duty(LEDC_HIGH_SPEED_MODE, channel);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+    }
 }
 
 
@@ -116,24 +118,64 @@ void app_main() {
 
     // Set up Fade
     ledc_fade_func_install(0);
+<<<<<<< Updated upstream
     setDuty(LEDC_CHANNEL_0);
     setDuty(LEDC_CHANNEL_1);
+
+    vTaskDelay(50 / portTICK_PERIOD_MS);
+
+    printf("Turning to 0 deg\n");
+    setAngle(0, LEDC_CHANNEL_0);
+
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+    printf("Turning to 90 deg\n");
+    setAngle(45, LEDC_CHANNEL_0);
+
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+    // Rotate servo counterclockwise to 90 degrees
+    printf("Turning to 0 deg\n");
+    setAngle(0, LEDC_CHANNEL_0);
+
+=======
+    //setDuty(LEDC_CHANNEL_0);
+    ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0);
+    //setDuty(LEDC_CHANNEL_1);
+    ledc_update_duty(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1);
     
     // Rotate servo counterclockwise to 90 degrees
-    setAngle(90, LEDC_CHANNEL_0);
+    for (float i = 0; i <= 60.0; i = i + 1.5){
+        setAngle(i, LEDC_CHANNEL_0);
+        vTaskDelay(200 / portTICK_PERIOD_MS);
+    }
+        //setAngle(90, LEDC_CHANNEL_0);
+>>>>>>> Stashed changes
 
     // Wait for some time
+    // vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+    // // Rotate servo counterclockwise to 0 degrees
+    // setAngle(0, LEDC_CHANNEL_1);
+
+    // // Wait for some time
+    // vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+    // setAngle(180, LEDC_CHANNEL_1);
+
+    vTaskDelay(3000 / portTICK_PERIOD_MS);
+<<<<<<< Updated upstream
+
+    printf("Turning to 90 deg\n");
+    //setAngle(90, LEDC_CHANNEL_0);
+=======
+    for (float i = 60.0; i >= 0.0; i = i - 1.5){
+        setAngle(i, LEDC_CHANNEL_0);
+        vTaskDelay(200 / portTICK_PERIOD_MS);
+    }
+
     vTaskDelay(3000 / portTICK_PERIOD_MS);
 
-    // Rotate servo counterclockwise to 0 degrees
-    setAngle(0, LEDC_CHANNEL_1);
-
-    // Wait for some time
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
-
-    setAngle(180, LEDC_CHANNEL_1);
-
-    vTaskDelay(3000 / portTICK_PERIOD_MS);
+>>>>>>> Stashed changes
     // Stop PWM signal
     ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_0, 0); // Stop PWM channel
     ledc_stop(LEDC_HIGH_SPEED_MODE, LEDC_CHANNEL_1, 0);

@@ -1,0 +1,234 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /Users/yeseniapuga/esp/projects/motor_control/build/bootloader/esp-idf/esptool_py && /Users/yeseniapuga/.espressif/python_env/idf5.3_py3.11_env/bin/python /Users/yeseniapuga/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/yeseniapuga/esp/projects/motor_control/build/bootloader/bootloader.bin
+Bootloader binary size 0x6870 bytes. 0x790 bytes (7%) free.
+[2/7] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj 
+/Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.3-dev-1922-g5454d37d49\" -DMBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -DUNITY_INCLUDE_CONFIG_H -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/Users/yeseniapuga/esp/projects/motor_control/build/config -I/Users/yeseniapuga/esp/projects/motor_control/main -I/Users/yeseniapuga/esp/esp-idf/components/newlib/platform_include -I/Users/yeseniapuga/esp/esp-idf/components/freertos/config/include -I/Users/yeseniapuga/esp/esp-idf/components/freertos/config/include/freertos -I/Users/yeseniapuga/esp/esp-idf/components/freertos/config/xtensa/include -I/Users/yeseniapuga/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/Users/yeseniapuga/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/Users/yeseniapuga/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/Users/yeseniapuga/esp/esp-idf/components/freertos/esp_additions/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/include/soc -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/dma/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/Users/yeseniapuga/esp/esp-idf/components/esp_hw_support/port/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/heap/include -I/Users/yeseniapuga/esp/esp-idf/components/log/include -I/Users/yeseniapuga/esp/esp-idf/components/soc/include -I/Users/yeseniapuga/esp/esp-idf/components/soc/esp32 -I/Users/yeseniapuga/esp/esp-idf/components/soc/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/hal/platform_port/include -I/Users/yeseniapuga/esp/esp-idf/components/hal/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/hal/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_rom/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_rom/include/esp32 -I/Users/yeseniapuga/esp/esp-idf/components/esp_rom/esp32 -I/Users/yeseniapuga/esp/esp-idf/components/esp_common/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_system/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_system/port/soc -I/Users/yeseniapuga/esp/esp-idf/components/esp_system/port/include/private -I/Users/yeseniapuga/esp/esp-idf/components/xtensa/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/xtensa/include -I/Users/yeseniapuga/esp/esp-idf/components/xtensa/deprecated_include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/include/apps -I/Users/yeseniapuga/esp/esp-idf/components/lwip/include/apps/sntp -I/Users/yeseniapuga/esp/esp-idf/components/lwip/lwip/src/include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/port/include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/port/freertos/include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/port/esp32xx/include -I/Users/yeseniapuga/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/Users/yeseniapuga/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_gpio/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_pm/include -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/port/include -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/mbedtls/include -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/mbedtls/library -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/esp_crt_bundle/include -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/everest/include -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m -I/Users/yeseniapuga/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m -I/Users/yeseniapuga/esp/esp-idf/components/efuse/include -I/Users/yeseniapuga/esp/esp-idf/components/efuse/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_bootloader_format/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_app_format/include -I/Users/yeseniapuga/esp/esp-idf/components/bootloader_support/include -I/Users/yeseniapuga/esp/esp-idf/components/bootloader_support/bootloader_flash/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_partition/include -I/Users/yeseniapuga/esp/esp-idf/components/app_update/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_mm/include -I/Users/yeseniapuga/esp/esp-idf/components/spi_flash/include -I/Users/yeseniapuga/esp/esp-idf/components/pthread/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_timer/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_gptimer/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_ringbuf/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_uart/include -I/Users/yeseniapuga/esp/esp-idf/components/vfs/include -I/Users/yeseniapuga/esp/esp-idf/components/app_trace/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_event/include -I/Users/yeseniapuga/esp/esp-idf/components/nvs_flash/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_pcnt/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_spi/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_mcpwm/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_ana_cmpr/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_i2s/include -I/Users/yeseniapuga/esp/esp-idf/components/sdmmc/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdmmc/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdspi/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdio/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_dac/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_rmt/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_tsens/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_sdm/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_i2c/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_ledc/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_parlio/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_driver_usb_serial_jtag/include -I/Users/yeseniapuga/esp/esp-idf/components/driver/deprecated -I/Users/yeseniapuga/esp/esp-idf/components/driver/i2c/include -I/Users/yeseniapuga/esp/esp-idf/components/driver/touch_sensor/include -I/Users/yeseniapuga/esp/esp-idf/components/driver/twai/include -I/Users/yeseniapuga/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_phy/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_phy/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_netif/include -I/Users/yeseniapuga/esp/esp-idf/components/wpa_supplicant/include -I/Users/yeseniapuga/esp/esp-idf/components/wpa_supplicant/port/include -I/Users/yeseniapuga/esp/esp-idf/components/wpa_supplicant/esp_supplicant/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_coex/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_wifi/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_wifi/include/local -I/Users/yeseniapuga/esp/esp-idf/components/unity/include -I/Users/yeseniapuga/esp/esp-idf/components/unity/unity/src -I/Users/yeseniapuga/esp/esp-idf/components/cmock/CMock/src -I/Users/yeseniapuga/esp/esp-idf/components/console -I/Users/yeseniapuga/esp/esp-idf/components/http_parser -I/Users/yeseniapuga/esp/esp-idf/components/esp-tls -I/Users/yeseniapuga/esp/esp-idf/components/esp-tls/esp-tls-crypto -I/Users/yeseniapuga/esp/esp-idf/components/esp_adc/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_adc/interface -I/Users/yeseniapuga/esp/esp-idf/components/esp_adc/esp32/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_adc/deprecated/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_eth/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_gdbstub/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_hid/include -I/Users/yeseniapuga/esp/esp-idf/components/tcp_transport/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_http_client/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_http_server/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_https_ota/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_https_server/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_psram/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_lcd/include -I/Users/yeseniapuga/esp/esp-idf/components/esp_lcd/interface -I/Users/yeseniapuga/esp/esp-idf/components/protobuf-c/protobuf-c -I/Users/yeseniapuga/esp/esp-idf/components/protocomm/include/common -I/Users/yeseniapuga/esp/esp-idf/components/protocomm/include/security -I/Users/yeseniapuga/esp/esp-idf/components/protocomm/include/transports -I/Users/yeseniapuga/esp/esp-idf/components/protocomm/include/crypto/srp6a -I/Users/yeseniapuga/esp/esp-idf/components/esp_local_ctrl/include -I/Users/yeseniapuga/esp/esp-idf/components/espcoredump/include -I/Users/yeseniapuga/esp/esp-idf/components/espcoredump/include/port/xtensa -I/Users/yeseniapuga/esp/esp-idf/components/wear_levelling/include -I/Users/yeseniapuga/esp/esp-idf/components/fatfs/diskio -I/Users/yeseniapuga/esp/esp-idf/components/fatfs/src -I/Users/yeseniapuga/esp/esp-idf/components/fatfs/vfs -I/Users/yeseniapuga/esp/esp-idf/components/idf_test/include -I/Users/yeseniapuga/esp/esp-idf/components/idf_test/include/esp32 -I/Users/yeseniapuga/esp/esp-idf/components/ieee802154/include -I/Users/yeseniapuga/esp/esp-idf/components/json/cJSON -I/Users/yeseniapuga/esp/esp-idf/components/mqtt/esp-mqtt/include -I/Users/yeseniapuga/esp/esp-idf/components/nvs_sec_provider/include -I/Users/yeseniapuga/esp/esp-idf/components/perfmon/include -I/Users/yeseniapuga/esp/esp-idf/components/spiffs/include -I/Users/yeseniapuga/esp/esp-idf/components/wifi_provisioning/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/Users/yeseniapuga/esp/projects/motor_control=. -fmacro-prefix-map=/Users/yeseniapuga/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj -c /Users/yeseniapuga/esp/projects/motor_control/main/main.c
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:1:1: error: stray '\' in program
+    1 | \#include "driver/i2c.h"
+      | ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:1:2: error: stray '#' in program
+    1 | \#include "driver/i2c.h"
+      |  ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:1:11: error: expected '=', ',', ';', 'asm' or '__attribute__' before string constant
+    1 | \#include "driver/i2c.h"
+      |           ^~~~~~~~~~~~~~
+In file included from /Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/stdint.h:14,
+                 from /Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/lib/gcc/xtensa-esp-elf/13.2.0/include/stdint.h:9,
+                 from /Users/yeseniapuga/esp/esp-idf/components/log/include/esp_log.h:10,
+                 from /Users/yeseniapuga/esp/projects/motor_control/main/main.c:2:
+/Users/yeseniapuga/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_stdint.h:20:9: error: unknown type name '__int8_t'
+   20 | typedef __int8_t int8_t ;
+      |         ^~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c: In function 'i2c_master_init':
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:43:5: error: unknown type name 'i2c_config_t'
+   43 |     i2c_config_t conf = {
+      |     ^~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:44:9: error: field name not in record or union initializer
+   44 |         .mode = I2C_MODE_MASTER,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:44:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:44:17: error: 'I2C_MODE_MASTER' undeclared (first use in this function)
+   44 |         .mode = I2C_MODE_MASTER,
+      |                 ^~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:44:17: note: each undeclared identifier is reported only once for each function it appears in
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:45:9: error: field name not in record or union initializer
+   45 |         .sda_io_num = I2C_MASTER_SDA_IO,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:45:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:6:38: warning: excess elements in scalar initializer
+    6 | #define I2C_MASTER_SDA_IO            21
+      |                                      ^~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:45:23: note: in expansion of macro 'I2C_MASTER_SDA_IO'
+   45 |         .sda_io_num = I2C_MASTER_SDA_IO,
+      |                       ^~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:6:38: note: (near initialization for 'conf')
+    6 | #define I2C_MASTER_SDA_IO            21
+      |                                      ^~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:45:23: note: in expansion of macro 'I2C_MASTER_SDA_IO'
+   45 |         .sda_io_num = I2C_MASTER_SDA_IO,
+      |                       ^~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:46:9: error: field name not in record or union initializer
+   46 |         .scl_io_num = I2C_MASTER_SCL_IO,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:46:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:5:38: warning: excess elements in scalar initializer
+    5 | #define I2C_MASTER_SCL_IO            22
+      |                                      ^~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:46:23: note: in expansion of macro 'I2C_MASTER_SCL_IO'
+   46 |         .scl_io_num = I2C_MASTER_SCL_IO,
+      |                       ^~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:5:38: note: (near initialization for 'conf')
+    5 | #define I2C_MASTER_SCL_IO            22
+      |                                      ^~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:46:23: note: in expansion of macro 'I2C_MASTER_SCL_IO'
+   46 |         .scl_io_num = I2C_MASTER_SCL_IO,
+      |                       ^~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:47:9: error: field name not in record or union initializer
+   47 |         .sda_pullup_en = GPIO_PULLUP_ENABLE,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:47:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:47:26: error: 'GPIO_PULLUP_ENABLE' undeclared (first use in this function)
+   47 |         .sda_pullup_en = GPIO_PULLUP_ENABLE,
+      |                          ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:47:26: warning: excess elements in scalar initializer
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:47:26: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:48:9: error: field name not in record or union initializer
+   48 |         .scl_pullup_en = GPIO_PULLUP_ENABLE,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:48:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:48:26: warning: excess elements in scalar initializer
+   48 |         .scl_pullup_en = GPIO_PULLUP_ENABLE,
+      |                          ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:48:26: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:49:9: error: field name not in record or union initializer
+   49 |         .master.clk_speed = I2C_MASTER_FREQ_HZ,
+      |         ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:49:9: note: (near initialization for 'conf')
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:8:38: warning: excess elements in scalar initializer
+    8 | #define I2C_MASTER_FREQ_HZ           100000
+      |                                      ^~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:49:29: note: in expansion of macro 'I2C_MASTER_FREQ_HZ'
+   49 |         .master.clk_speed = I2C_MASTER_FREQ_HZ,
+      |                             ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:8:38: note: (near initialization for 'conf')
+    8 | #define I2C_MASTER_FREQ_HZ           100000
+      |                                      ^~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:49:29: note: in expansion of macro 'I2C_MASTER_FREQ_HZ'
+   49 |         .master.clk_speed = I2C_MASTER_FREQ_HZ,
+      |                             ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:51:5: error: implicit declaration of function 'i2c_param_config' [-Werror=implicit-function-declaration]
+   51 |     i2c_param_config(I2C_MASTER_NUM, &conf);
+      |     ^~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:7:38: error: 'I2C_NUM_0' undeclared (first use in this function)
+    7 | #define I2C_MASTER_NUM               I2C_NUM_0
+      |                                      ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:51:22: note: in expansion of macro 'I2C_MASTER_NUM'
+   51 |     i2c_param_config(I2C_MASTER_NUM, &conf);
+      |                      ^~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:52:5: error: implicit declaration of function 'i2c_driver_install' [-Werror=implicit-function-declaration]
+   52 |     i2c_driver_install(I2C_MASTER_NUM, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0);
+      |     ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:52:44: error: request for member 'mode' in something not a structure or union
+   52 |     i2c_driver_install(I2C_MASTER_NUM, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0);
+      |                                            ^
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c: In function 'select_mux_channel':
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:56:5: error: unknown type name 'i2c_cmd_handle_t'
+   56 |     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+      |     ^~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:56:28: error: implicit declaration of function 'i2c_cmd_link_create' [-Werror=implicit-function-declaration]
+   56 |     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+      |                            ^~~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:57:5: error: implicit declaration of function 'i2c_master_start'; did you mean 'i2c_master_init'? [-Werror=implicit-function-declaration]
+   57 |     i2c_master_start(cmd);
+      |     ^~~~~~~~~~~~~~~~
+      |     i2c_master_init
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:58:5: error: implicit declaration of function 'i2c_master_write_byte' [-Werror=implicit-function-declaration]
+   58 |     i2c_master_write_byte(cmd, (MUX_ADDRESS << 1) | I2C_MASTER_WRITE, true);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:58:53: error: 'I2C_MASTER_WRITE' undeclared (first use in this function); did you mean 'I2C_MASTER_NUM'?
+   58 |     i2c_master_write_byte(cmd, (MUX_ADDRESS << 1) | I2C_MASTER_WRITE, true);
+      |                                                     ^~~~~~~~~~~~~~~~
+      |                                                     I2C_MASTER_NUM
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:58:71: error: 'true' undeclared (first use in this function)
+   58 |     i2c_master_write_byte(cmd, (MUX_ADDRESS << 1) | I2C_MASTER_WRITE, true);
+      |                                                                       ^~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:4:1: note: 'true' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
+    3 | #include <stdio.h>
+  +++ |+#include <stdbool.h>
+    4 | 
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:60:5: error: implicit declaration of function 'i2c_master_stop'; did you mean 'i2c_master_init'? [-Werror=implicit-function-declaration]
+   60 |     i2c_master_stop(cmd);
+      |     ^~~~~~~~~~~~~~~
+      |     i2c_master_init
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:61:5: error: unknown type name 'esp_err_t'
+   61 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |     ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:61:21: error: implicit declaration of function 'i2c_master_cmd_begin' [-Werror=implicit-function-declaration]
+   61 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |                     ^~~~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:7:38: error: 'I2C_NUM_0' undeclared (first use in this function)
+    7 | #define I2C_MASTER_NUM               I2C_NUM_0
+      |                                      ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:61:42: note: in expansion of macro 'I2C_MASTER_NUM'
+   61 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |                                          ^~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:61:87: error: 'portTICK_PERIOD_MS' undeclared (first use in this function)
+   61 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |                                                                                       ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:62:16: error: 'ESP_OK' undeclared (first use in this function); did you mean 'ESP_LOGD'?
+   62 |     if (ret == ESP_OK) {
+      |                ^~~~~~
+      |                ESP_LOGD
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:67:5: error: implicit declaration of function 'i2c_cmd_link_delete' [-Werror=implicit-function-declaration]
+   67 |     i2c_cmd_link_delete(cmd);
+      |     ^~~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c: In function 'send_command_to_slave':
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:71:5: error: unknown type name 'i2c_cmd_handle_t'
+   71 |     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+      |     ^~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:73:52: error: 'I2C_MASTER_WRITE' undeclared (first use in this function); did you mean 'I2C_MASTER_NUM'?
+   73 |     i2c_master_write_byte(cmd, (slave_addr << 1) | I2C_MASTER_WRITE, true);
+      |                                                    ^~~~~~~~~~~~~~~~
+      |                                                    I2C_MASTER_NUM
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:73:70: error: 'true' undeclared (first use in this function)
+   73 |     i2c_master_write_byte(cmd, (slave_addr << 1) | I2C_MASTER_WRITE, true);
+      |                                                                      ^~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:73:70: note: 'true' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:76:5: error: unknown type name 'esp_err_t'
+   76 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |     ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:7:38: error: 'I2C_NUM_0' undeclared (first use in this function)
+    7 | #define I2C_MASTER_NUM               I2C_NUM_0
+      |                                      ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:76:42: note: in expansion of macro 'I2C_MASTER_NUM'
+   76 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |                                          ^~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:76:87: error: 'portTICK_PERIOD_MS' undeclared (first use in this function)
+   76 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+      |                                                                                       ^~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:77:16: error: 'ESP_OK' undeclared (first use in this function); did you mean 'ESP_LOGD'?
+   77 |     if (ret == ESP_OK) {
+      |                ^~~~~~
+      |                ESP_LOGD
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c: In function 'read_slave_signal':
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:87:5: error: unknown type name 'i2c_cmd_handle_t'
+   87 |     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+      |     ^~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:89:52: error: 'I2C_MASTER_READ' undeclared (first use in this function); did you mean 'I2C_MASTER_NUM'?
+   89 |     i2c_master_write_byte(cmd, (slave_addr << 1) | I2C_MASTER_READ, true);
+      |                                                    ^~~~~~~~~~~~~~~
+      |                                                    I2C_MASTER_NUM
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:89:69: error: 'true' undeclared (first use in this function)
+   89 |     i2c_master_write_byte(cmd, (slave_addr << 1) | I2C_MASTER_READ, true);
+      |                                                                     ^~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:89:69: note: 'true' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:90:5: error: implicit declaration of function 'i2c_master_read_byte' [-Werror=implicit-function-declaration]
+   90 |     i2c_master_read_byte(cmd, &signal, I2C_MASTER_NACK);  // I2C_MASTER_LAST_NACK might be used depending on SDK version
+      |     ^~~~~~~~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:90:40: error: 'I2C_MASTER_NACK' undeclared (first use in this function); did you mean 'I2C_MASTER_NUM'?
+   90 |     i2c_master_read_byte(cmd, &signal, I2C_MASTER_NACK);  // I2C_MASTER_LAST_NACK might be used depending on SDK version
+      |                                        ^~~~~~~~~~~~~~~
+      |                                        I2C_MASTER_NUM
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:92:5: error: unknown type name 'esp_err_t'
+   92 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, pdMS_TO_TICKS(I2C_MASTER_TIMEOUT_MS));
+      |     ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:7:38: error: 'I2C_NUM_0' undeclared (first use in this function)
+    7 | #define I2C_MASTER_NUM               I2C_NUM_0
+      |                                      ^~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:92:42: note: in expansion of macro 'I2C_MASTER_NUM'
+   92 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, pdMS_TO_TICKS(I2C_MASTER_TIMEOUT_MS));
+      |                                          ^~~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:92:63: error: implicit declaration of function 'pdMS_TO_TICKS' [-Werror=implicit-function-declaration]
+   92 |     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, pdMS_TO_TICKS(I2C_MASTER_TIMEOUT_MS));
+      |                                                               ^~~~~~~~~~~~~
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:94:16: error: 'ESP_OK' undeclared (first use in this function); did you mean 'ESP_LOGD'?
+   94 |     if (ret != ESP_OK) {
+      |                ^~~~~~
+      |                ESP_LOGD
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c: In function 'app_main':
+/Users/yeseniapuga/esp/projects/motor_control/main/main.c:133:21: error: implicit declaration of function 'vTaskDelay' [-Werror=implicit-function-declaration]
+  133 |                     vTaskDelay(pdMS_TO_TICKS(1000));
+      |                     ^~~~~~~~~~
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.
