@@ -8,7 +8,6 @@ class TemperatureHeatmap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int width = 32; // Width of the grid
-    int height = (temperatures.length / width).ceil(); 
       return LayoutBuilder(
       builder: (context, constraints) {
         return GridView.builder(
@@ -27,19 +26,6 @@ class TemperatureHeatmap extends StatelessWidget {
         );
       },
     );
-
-    // return GridView.builder(
-    //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-    //     crossAxisCount: width,
-    //   ),
-    //   itemCount: temperatures.length,
-    //   itemBuilder: (context, index) {
-    //     return Container(
-    //       color: getColorForTemperature(temperatures[index]),
-    //       alignment: Alignment.center,
-    //     );
-    //   },
-    // );
   }
 
   Color getColorForTemperature(double temperature) {

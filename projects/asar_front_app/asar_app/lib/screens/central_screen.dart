@@ -19,7 +19,12 @@ class CentralScreenState extends State<CentralScreen> {
         backgroundColor: Colors.lightBlue[50],
         title: Text(
           'Status: ${widget.deviceName}',
+          style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
         ),
+        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
 

@@ -40,9 +40,10 @@ class TemperatureScreenState extends State<TemperatureScreen> {
         print('NUMBER OF SEGS $numberOfSegments');
 
         List<dynamic> orderedKeys = chunkedData.keys.toList()..sort();
-        int segmentsToProcess = numberOfSegments > 12 ? 12 : numberOfSegments;
+        int segmentsToProcess = numberOfSegments > 12 ? numberOfSegments : 12;
+        print('segmentsToProcess: $segmentsToProcess');
         List<double> latestTemperatures = [];
-        // Start from the end to get the most recent segments
+        // Start from the end to get the most recent segmentsq
         for (var i = orderedKeys.length - segmentsToProcess; i < orderedKeys.length; i++) {
             List<dynamic> chunk = List.from(chunkedData[orderedKeys[i]]);
             latestTemperatures.addAll(chunk.map((value) => double.parse(value.toString())));
@@ -50,7 +51,6 @@ class TemperatureScreenState extends State<TemperatureScreen> {
 
         if (latestTemperatures.length != 768 * 2) {
             print('Unexpected number of temperature values: ${latestTemperatures.length}');
-            return;
         }
 
         List<double> beforeTempies = latestTemperatures.sublist(0, 768); //[];
@@ -106,7 +106,7 @@ Widget build(BuildContext context) {
       title: const Text('Temperature Data Output'),
     ),
     body: ListView(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       children: [
         Align(
             alignment: Alignment.centerLeft,
@@ -122,7 +122,7 @@ Widget build(BuildContext context) {
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
                     "Before: ${averageBeforeTemp.toStringAsFixed(2)}°C",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -148,7 +148,7 @@ Widget build(BuildContext context) {
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
                       "After: ${averageAfterTemp.toStringAsFixed(2)}°C",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
